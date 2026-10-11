@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smmash Burger | Cardápio</title>
+<meta name="description" content="Cardápio da Smmash Burger em Brasília: smmash burgers no pão brioche, combos, adicionais, bebidas e sobremesas, com preços.">
+<meta name="theme-color" content="#F7941D">
+<!-- Prévia do link quando alguém compartilha no WhatsApp/Instagram -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Smmash Burger">
+<meta property="og:title" content="Smmash Burger | Cardápio">
+<meta property="og:description" content="Smmash de 90g bem prensado no pão brioche. Veja o cardápio completo com preços.">
+<meta property="og:url" content="https://smmashburguer.netlify.app/">
+<!-- PROVISÓRIO: quando tiver uma foto boa de lanche (1200x630), suba junto com o site e descomente a linha abaixo -->
+<!-- <meta property="og:image" content="https://smmashburguer.netlify.app/compartilhar.jpg"> -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F7941D'/%3E%3Ctext x='32' y='49' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' text-anchor='middle' fill='%23D6281E'%3ES%3C/text%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' text-anchor='middle' fill='%23ffffff'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CORES DO SITE — troque aqui para mudar a identidade toda
+   ============================================================ */
+:root{
+  --mostarda:#F7941D;
+  --ketchup:#D6281E;
+  --carvao:#1E1A16;
+  --papel:#FFFDF7;
+  --picles:#2F7D32;
+  --linha:#E6DFCF;
+  --suave:#6E665C;
+  --whats:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-variation-settings:"wdth" 100;
+  background:var(--papel);color:var(--carvao);
+  line-height:1.5;-webkit-font-smoothing:antialiased;
+  padding-bottom:24px;
+}
+body.com-pedido{padding-bottom:96px}
+body.travado{overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--ketchup);outline-offset:2px}
+
+/* aviso de prévia */
+.previa{background:var(--carvao);color:var(--papel);font-size:13px;text-align:center;padding:8px 16px}
+
+/* ---------- TOPO ---------- */
+.hero{background:var(--mostarda);padding:28px 16px 24px;overflow:hidden}
+.hero-inner{max-width:960px;margin:0 auto}
+.marca{
+  font-weight:900;
+  font-variation-settings:"wdth" 125;
+  font-size:clamp(50px,14vw,150px);
+  line-height:.82;letter-spacing:-.02em;
+  color:#fff;text-shadow:0 4px 0 var(--ketchup);
+  transform-origin:50% 100%;
+  animation:smash .9s cubic-bezier(.2,.9,.3,1.2) both;
+}
+.marca span{display:block}
+@keyframes smash{
+  0%{transform:translateY(-40px) scaleY(1.5) scaleX(.9);opacity:0}
+  45%{transform:translateY(0) scaleY(.72) scaleX(1.08);opacity:1}
+  70%{transform:scaleY(1.06) scaleX(.98)}
+  100%{transform:none}
+}
+.chapa{height:10px;background:var(--ketchup);border-radius:3px;margin:12px 0 16px;max-width:560px}
+.slogan{font-size:clamp(16px,2.2vw,20px);max-width:38ch;font-weight:500}
+.status{
+  display:inline-block;margin-top:14px;padding:6px 14px;border-radius:999px;
+  background:var(--carvao);color:var(--papel);font-weight:800;font-size:14px;
+}
+.status.aberto:before{
+  content:"";display:inline-block;width:9px;height:9px;border-radius:50%;
+  background:#6BE07A;margin-right:8px;vertical-align:1px;
+}
+.como-pedir{margin-top:12px;font-size:15px;font-weight:600;max-width:48ch}
+
+/* ---------- NAVEGAÇÃO DAS CATEGORIAS ---------- */
+.cats{position:sticky;top:0;z-index:10;background:var(--papel);border-bottom:1px solid var(--linha)}
+.cats-inner{
+  max-width:960px;margin:0 auto;display:flex;
+  overflow-x:auto;padding:12px 8px 12px 16px;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.cats-inner::-webkit-scrollbar{display:none}
+.cats a{
+  flex:0 0 auto;margin-right:8px;text-decoration:none;color:var(--carvao);
+  font-weight:700;font-size:15px;padding:8px 16px;border-radius:999px;
+  background:#F4EEDD;
+}
+.cats a.ativa{background:var(--carvao);color:var(--papel)}
+
+/* ---------- CARDÁPIO ---------- */
+main{max-width:960px;margin:0 auto;padding:0 16px}
+.secao{padding-top:36px;scroll-margin-top:64px}
+.secao h2{
+  font-weight:900;font-variation-settings:"wdth" 125;
+  font-size:clamp(30px,6vw,44px);line-height:1;
+  padding-bottom:12px;border-bottom:4px solid var(--carvao);
+}
+.grupo-titulo{
+  margin-top:24px;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--suave);
+}
+.item{display:flex;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--linha)}
+.item .foto{
+  flex:0 0 auto;width:84px;height:84px;margin-right:14px;border-radius:12px;
+  object-fit:cover;background:#F4EEDD;
+}
+.item .texto{flex:1 1 auto;min-width:0}
+.item .nome{font-size:19px;font-weight:800;font-variation-settings:"wdth" 112;line-height:1.2}
+.item .desc{color:var(--suave);font-size:15px;margin-top:4px;max-width:52ch}
+.item .lado{flex:0 0 auto;margin-left:12px;display:flex;align-items:center}
+.preco{font-weight:800;font-size:18px;white-space:nowrap}
+.add{
+  position:relative;flex:0 0 auto;width:40px;height:40px;margin-left:10px;border-radius:50%;
+  background:var(--carvao);color:var(--papel);font-size:24px;font-weight:700;line-height:40px;text-align:center;
+}
+.add .qtd{
+  position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;
+  background:var(--ketchup);color:#fff;font-size:12px;font-weight:800;line-height:20px;
+}
+.selo{
+  display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;vertical-align:middle;
+  font-size:12px;font-weight:800;font-variation-settings:"wdth" 100;line-height:1.5;
+  background:#FBE3D9;color:#A61E15;
+}
+.selo.verde{background:#E9F3E4;color:#1F4D22}
+.nota{margin-top:12px;padding:12px 14px;border-radius:12px;background:#E9F3E4;color:#1F4D22;font-size:15px}
+
+/* item em destaque (combo) */
+.item.destaque{
+  margin-top:16px;padding:16px;border:0;border-radius:16px;background:#fff;
+  box-shadow:0 0 0 3px var(--ketchup);
+}
+.item.destaque .nome{color:var(--ketchup);font-size:22px;font-variation-settings:"wdth" 120}
+.item.destaque .desc{color:var(--carvao);font-weight:600}
+.item.destaque .selo{display:table;margin:8px 0 0}
+
+/* listas compactas (adicionais, bebidas) */
+.compacto .item{padding:10px 0;align-items:center}
+.compacto .item .nome{font-size:17px}
+.compacto .item .desc{font-size:14px;margin-top:2px}
+.compacto .preco{font-size:16px}
+.compacto .add{width:36px;height:36px;line-height:36px;font-size:22px}
+
+/* ---------- INFO / RODAPÉ ---------- */
+.info{
+  margin:56px auto 0;max-width:960px;padding:32px 16px;
+  display:grid;grid-gap:24px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  border-top:4px solid var(--carvao);
+}
+.info h4{font-weight:900;font-variation-settings:"wdth" 118;font-size:20px;margin-bottom:6px}
+.info a{color:var(--carvao);font-weight:700}
+.info .alergia{grid-column:1/-1;padding:12px 14px;border-radius:12px;background:#F4EEDD;font-size:15px}
+.horarios{list-style:none}
+.horarios li{display:flex;justify-content:space-between;max-width:240px}
+.horarios li.hoje{font-weight:800}
+.links-contato a{display:inline-block;margin:0 16px 6px 0}
+footer{text-align:center;color:var(--suave);font-size:13px;padding:24px 16px 8px}
+.sem-js{max-width:960px;margin:24px auto;padding:16px;border-radius:12px;background:#F4EEDD;font-weight:600}
+
+/* ---------- WHATSAPP ---------- */
+.icone{width:22px;height:22px;flex:0 0 auto}
+.btn-whats{
+  display:flex;align-items:center;justify-content:center;width:100%;
+  padding:14px 20px;border-radius:999px;text-decoration:none;
+  background:var(--whats);color:var(--carvao);font-weight:800;font-size:16px;
+}
+.btn-whats .icone{margin-right:8px}
+.whats-flutuante{
+  position:fixed;right:16px;bottom:16px;z-index:20;
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--whats);color:var(--carvao);
+  box-shadow:0 6px 18px rgba(30,26,22,.28);
+}
+.whats-flutuante .icone{width:28px;height:28px}
+body.com-pedido .whats-flutuante{display:none} /* com pedido aberto, o WhatsApp fica dentro da lista */
+
+/* ---------- MEU PEDIDO ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 16px 16px;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.barra button{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;max-width:560px;margin:0 auto;padding:14px 20px;border-radius:999px;
+  background:var(--carvao);color:var(--papel);font-weight:800;font-size:16px;
+  box-shadow:0 6px 18px rgba(30,26,22,.3);
+}
+.barra .total{color:var(--mostarda)}
+.fundo{position:fixed;top:0;left:0;right:0;bottom:0;z-index:30;background:rgba(30,26,22,.55)}
+.folha{
+  position:fixed;left:0;right:0;bottom:0;z-index:31;
+  max-width:640px;max-height:85vh;margin:0 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  background:var(--papel);border-radius:20px 20px 0 0;
+  padding:20px 16px 24px;padding-bottom:calc(24px + env(safe-area-inset-bottom));
+}
+.folha-topo{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.folha h2{font-weight:900;font-variation-settings:"wdth" 125;font-size:28px;line-height:1}
+.fechar{font-weight:700;text-decoration:underline;padding:8px 0 8px 12px}
+.linha-pedido{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--linha)}
+.linha-pedido .n{flex:1 1 auto;min-width:0;font-weight:700}
+.linha-pedido .sub{flex:0 0 auto;width:84px;text-align:right;font-weight:700;white-space:nowrap}
+.controles{flex:0 0 auto;display:flex;align-items:center;margin-left:8px}
+.controles button{
+  width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--carvao);
+  font-size:20px;font-weight:700;line-height:34px;text-align:center;
+}
+.controles span{display:inline-block;min-width:28px;text-align:center;font-weight:800}
+.total-pedido{display:flex;justify-content:space-between;padding:14px 0;font-size:20px;font-weight:900}
+.dica{color:var(--suave);font-size:15px;margin-bottom:16px}
+.limpar{display:block;margin:14px auto 0;color:var(--suave);text-decoration:underline;font-size:15px}
+
+@media (min-width:640px){
+  .compacto .grade{display:grid;grid-template-columns:1fr 1fr;grid-column-gap:40px}
+}
+@media (min-width:720px){
+  .hero{padding:56px 24px 40px}
+  .item{padding:22px 0}
+  .compacto .item{padding:12px 0}
+  .item .foto{width:104px;height:104px}
+}
+@media (prefers-reduced-motion:reduce){
+  .marca{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="previa" id="previa" hidden></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1 class="marca" id="marca" aria-label="Smmash Burger"><span>SMMASH</span><span>BURGER</span></h1>
+    <div class="chapa" aria-hidden="true"></div>
+    <p class="slogan" id="slogan"></p>
+    <p class="status" id="status" hidden></p>
+    <p class="como-pedir" id="como-pedir"></p>
+  </div>
+</header>
+
+<nav class="cats" aria-label="Categorias do cardápio"><div class="cats-inner" id="cats"></div></nav>
+
+<main id="cardapio">
+  <noscript><p class="sem-js">Não foi possível carregar o cardápio neste navegador. Peça o cardápio no balcão ou abra este link no Chrome ou no Safari.</p></noscript>
+</main>
+
+<section class="info" aria-label="Informações">
+  <div>
+    <h4>Onde estamos</h4>
+    <p><span id="endereco"></span><br><a id="link-mapa" href="#" target="_blank" rel="noopener">Como chegar</a></p>
+  </div>
+  <div>
+    <h4>Horário</h4>
+    <p id="horario-vazio">Horário a confirmar</p>
+    <ul class="horarios" id="horarios" hidden></ul>
+  </div>
+  <div>
+    <h4>Pagamento</h4>
+    <p id="pagamento"></p>
+  </div>
+  <div id="bloco-contato" hidden>
+    <h4>Fale com a gente</h4>
+    <p class="links-contato"><a id="link-whats" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a><a id="link-insta" href="#" target="_blank" rel="noopener" hidden>Instagram</a></p>
+  </div>
+  <p class="alergia" id="alergia" hidden></p>
+</section>
+
+<footer>Site feito por Mental Tech</footer>
+
+<a class="whats-flutuante" id="whats-flutuante" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" hidden>
+  <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.6 7.4c.3-.3.8-.3 1 .1l1 1.9c.2.3.1.7-.1 1l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.3-.3.7-.3 1-.1l1.9 1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4a10 10 0 0 1-5.1-5.1c-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+</a>
+
+<div class="barra" id="barra" hidden>
+  <button type="button" id="abrir-pedido"><span id="barra-qtd">Ver meu pedido</span><span class="total" id="barra-total"></span></button>
+</div>
+
+<div class="fundo" id="fundo" hidden></div>
+<div class="folha" id="folha" role="dialog" aria-modal="true" aria-labelledby="folha-titulo" hidden>
+  <div class="folha-topo">
+    <h2 id="folha-titulo">Meu pedido</h2>
+    <button type="button" class="fechar" id="fechar-pedido">Fechar</button>
+  </div>
+  <div id="pedido-linhas"></div>
+  <div class="total-pedido"><span>Total</span><span id="pedido-total"></span></div>
+  <p class="dica" id="pedido-dica">Mostre esta lista no balcão na hora de pedir. Adicionais: diga em qual lanche vai cada um.</p>
+  <a class="btn-whats" id="pedido-whats" href="#" target="_blank" rel="noopener" hidden>
+    <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.6 7.4c.3-.3.8-.3 1 .1l1 1.9c.2.3.1.7-.1 1l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.3-.3.7-.3 1-.1l1.9 1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4a10 10 0 0 1-5.1-5.1c-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+    Enviar pedido pelo WhatsApp
+  </a>
+  <button type="button" class="limpar" id="limpar-pedido">Limpar lista</button>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — TUDO O QUE MUDA NO SITE FICA AQUI
+   Para trocar um preço, ache o item e mude o número (use ponto: 21.90).
+   Linhas com "PROVISÓRIO" ainda precisam ser confirmadas com o dono.
+   ============================================================ */
+var CONFIG = {
+  nome: "Smmash Burger",
+  slogan: "Smmash de 90g bem prensado no pão brioche, com crosta crocante e muito queijo.",
+
+  // Frase que explica como pedir, aparece no topo do site
+  comoPedir: "Escolha aqui no cardápio e faça seu pedido no balcão.", // PROVISÓRIO: confirmar com o dono como o pedido funciona
+
+  // Faixa escura no topo. Deixe "" (vazio) para tirar depois da aprovação
+  previa: "Prévia feita pela Mental Tech, com base nos cardápios do Google Maps (fev. 2026).",
+
+  // WhatsApp: só números, com 55 + DDD. Ex.: "5561999998888"
+  // Enquanto estiver vazio, os botões de WhatsApp ficam escondidos.
+  whatsapp: "", // PROVISÓRIO
+
+  // Instagram: só o nome do perfil, sem @. Ex.: "smmashburger". Vazio = escondido.
+  instagram: "", // PROVISÓRIO
+
+  endereco: "Brasília, DF", // PROVISÓRIO: colocar o endereço completo (quadra, bloco, loja)
+  mapa: "https://maps.app.goo.gl/Jzn2DgzbtV1eiN7s9",
+
+  pagamento: "Pix, cartão, dinheiro e vale-refeição (Sodexo, Alelo e VR). Pagamento no balcão.",
+  alergia: "Tem alergia ou alguma restrição alimentar? Avise no balcão antes de pedir.",
+
+  // Horário de funcionamento. Enquanto for null, o site mostra "Horário a confirmar".
+  // Para preencher, troque null por algo assim (dia fechado = null):
+  // { seg: null, ter: ["18:00","23:00"], qua: ["18:00","23:00"], qui: ["18:00","23:00"],
+  //   sex: ["18:00","00:30"], sab: ["18:00","00:30"], dom: ["18:00","23:00"] }
+  horarios: null, // PROVISÓRIO
+
+  /* ---------- CARDÁPIO ----------
+     Cada item: nome, preco, e se quiser: descricao, selo, foto.
+     selo: texto curto que aparece ao lado do nome. Ex.: "Promoção", "Mais pedido", "Veggie"
+     foto: endereço (link) de uma foto do lanche. Vazio = sem foto.
+     destaque: true deixa o item em um cartão chamativo (use pouco). */
+  categorias: [
+    { id: "combos", titulo: "Combos", itens: [
+      { nome: "Commbo Smmash", preco: 65.90, descricao: "2 smmash + batata + refri tradicional.", selo: "Promoção", destaque: true }
+    ]},
+
+    { id: "smmash", titulo: "Smmash",
+      nota: "Ammo Low Carb: troque o pão por alface em qualquer lanche. É só avisar na hora de pedir.",
+      // PROVISÓRIO: perguntar ao dono qual é o mais pedido e colocar selo: "Mais pedido" nele
+      itens: [
+      { nome: "Smmash-X", preco: 21.90, descricao: "Um clássico direto ao ponto. Pão brioche macio, blend smmash de 90g bem prensado, queijo cheddar e o molho secreto da casa." },
+      { nome: "Smmash-Salad", preco: 23.90, descricao: "Frescor sem abrir mão da suculência. Pão brioche, blend smmash de 90g selado na chapa, queijo muçarela, alface crocante, tomate fresco e o molho especial Salad." },
+      { nome: "Smmash Bacon", preco: 25.90, descricao: "Pra quem gosta de intensidade. Pão brioche fofinho, blend smmash de 90g, queijo cheddar, duas fatias de bacon crocante e o molho secreto da casa." },
+      { nome: "Méquizzinho", preco: 25.90, descricao: "A releitura do clássico que todo mundo conhece. Pão brioche, blend smmash de 90g, queijo cheddar, ketchup, mostarda, picles e cebola roxa." },
+      { nome: "Smmash Cheddar", preco: 26.90, descricao: "Pra quem ama cheddar. Pão brioche, blend smmash de 90g no ponto, muuuito queijo cheddar derretido e pedaços de bacon crocante." },
+      { nome: "Smmash Mmozin", preco: 26.90, descricao: "Um burger cheio de camadas de sabor. Pão brioche, blend smmash de 90g, queijo cheddar, duas fatias de bacon, cebola caramelizada e molho chipotle." },
+      { nome: "Smmash Churros", preco: 19.90, selo: "Doce", descricao: "Pão brioche tostado, churros prensado por dentro, camadas generosas de doce de leite e açúcar com canela." }
+    ]},
+
+    // PROVISÓRIO: falta o cardápio das batatas. Quando tiver, coloque os itens aqui e apague a nota.
+    { id: "batatas", titulo: "Batatas",
+      nota: "O cardápio das batatas está sendo atualizado. Pergunte as opções no balcão.",
+      itens: []
+    },
+
+    { id: "adicionais", titulo: "Adicionais", compacto: true,
+      nota: "Adicionais vão junto do lanche. É só avisar em qual lanche quer cada um na hora de pedir.",
+      itens: [
+      { nome: "Queijo cheddar", preco: 4.90 },
+      { nome: "Bacon", preco: 6.90 },
+      { nome: "Cebola caramelizada", preco: 5.90 },
+      { nome: "Cebola roxa", preco: 2.90 },
+      { nome: "Picles", preco: 3.90 },
+      { nome: "Tomate", preco: 2.90 },
+      { nome: "Alface", preco: 2.90 },
+      { nome: "Molho extra", preco: 4.90, descricao: "Salad, Secreto, Chipotle ou Picante (ótimo com as batatas)." },
+      { nome: "Blend smmash 90g", preco: 8.90 },
+      { nome: "Blend 160g", preco: 12.90 },
+      { nome: "Blend chicken", preco: 9.90 },
+      { nome: "Blend veggie", preco: 10.90, selo: "Veggie" }
+    ]},
+
+    // PROVISÓRIO: confirmar o tamanho de cada bebida (lata, 600 ml, long neck...) e colocar em descricao
+    { id: "bebidas", titulo: "Bebidas", compacto: true, grupos: [
+      { titulo: "Refrigerantes", itens: [
+        { nome: "Coca-Cola", preco: 8.90 },
+        { nome: "Coca-Cola Zero", preco: 8.90 },
+        { nome: "Guaraná", preco: 8.90 },
+        { nome: "Guaraná Zero", preco: 8.90 },
+        { nome: "Sprite", preco: 8.90 },
+        { nome: "Sprite Zero", preco: 8.90 },
+        { nome: "H2O", preco: 8.90 },
+        { nome: "Wewi Guaraná Zero", preco: 11.90 }
+      ]},
+      { titulo: "Sucos e chás", itens: [
+        { nome: "Suco de laranja", preco: 11.90 },
+        { nome: "Suco de uva integral", preco: 11.90 },
+        { nome: "Chá de pêssego", preco: 8.90 },
+        { nome: "Chá de limão", preco: 8.90 }
+      ]},
+      { titulo: "Águas", itens: [
+        { nome: "Água", preco: 6.90 },
+        { nome: "Água com gás", preco: 6.90 }
+      ]},
+      { titulo: "Cerveja", itens: [
+        { nome: "Heineken", preco: 11.90 }
+      ]}
+    ]},
+
+    { id: "sobremesas", titulo: "Sobremesas", itens: [
+      { nome: "Churros", preco: 13.90, descricao: "Quentinhos, com casquinha crocante, interior macio e finalizados com doce de leite." },
+      { nome: "Brownie", preco: 8.90, descricao: "Denso, úmido e intenso. Tradicional ou avelã." },
+      { nome: "Brownie Fit", preco: 10.90, selo: "Zero açúcar", descricao: "Massa macia e sabor equilibrado, pra quem quer um doce mais leve." }
+    ]}
+  ]
+};
+
+/* ============================================================
+   DAQUI PRA BAIXO É O FUNCIONAMENTO DO SITE — não precisa mexer
+   ============================================================ */
+(function(){
+  var SELOS_VERDES = { "veggie": 1, "zero açúcar": 1, "low carb": 1 };
+  var DIAS = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
+  var NOMES_DIAS = { seg: "Segunda", ter: "Terça", qua: "Quarta", qui: "Quinta", sex: "Sexta", sab: "Sábado", dom: "Domingo" };
+
+  function $(id){ return document.getElementById(id); }
+  function el(tag, cls, txt){
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt != null) e.textContent = txt;
+    return e;
+  }
+  function dinheiro(v){ return "R$ " + (Math.round(v * 100) / 100).toFixed(2).replace(".", ","); }
+  function linkWhats(msg){ return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg); }
+  function mostrar(e, sim){ if (sim) e.removeAttribute("hidden"); else e.setAttribute("hidden", ""); }
+
+  /* ---------- textos do topo e informações ---------- */
+  var marca = $("marca");
+  marca.setAttribute("aria-label", CONFIG.nome);
+  marca.innerHTML = "";
+  var partes = CONFIG.nome.toUpperCase().split(" ");
+  for (var p = 0; p < partes.length; p++) marca.appendChild(el("span", "", partes[p]));
+
+  if (CONFIG.previa){ $("previa").textContent = CONFIG.previa; mostrar($("previa"), true); }
+  $("slogan").textContent = CONFIG.slogan;
+  $("como-pedir").textContent = CONFIG.comoPedir;
+  $("endereco").textContent = CONFIG.endereco;
+  $("link-mapa").href = CONFIG.mapa;
+  $("pagamento").textContent = CONFIG.pagamento;
+  if (CONFIG.alergia){ $("alergia").textContent = CONFIG.alergia; mostrar($("alergia"), true); }
+
+  if (CONFIG.whatsapp){
+    var oi = "Olá, " + CONFIG.nome + "! Vim pelo cardápio online.";
+    $("link-whats").href = linkWhats(oi);
+    $("whats-flutuante").href = linkWhats(oi);
+    mostrar($("link-whats"), true);
+    mostrar($("whats-flutuante"), true);
+  }
+  if (CONFIG.instagram){
+    $("link-insta").href = "https://instagram.com/" + CONFIG.instagram;
+    $("link-insta").textContent = "@" + CONFIG.instagram;
+    mostrar($("link-insta"), true);
+  }
+  mostrar($("bloco-contato"), !!(CONFIG.whatsapp || CONFIG.instagram));
+
+  /* ---------- horário e "aberto agora" ---------- */
+  function minutos(h){ var x = h.split(":"); return parseInt(x[0], 10) * 60 + parseInt(x[1], 10); }
+  function hora(h){ var x = h.split(":"); return parseInt(x[0], 10) + "h" + (x[1] === "00" ? "" : x[1]); }
+
+  if (CONFIG.horarios){
+    var H = CONFIG.horarios;
+    var agora = new Date();
+    var hoje = DIAS[agora.getDay()];
+    var ontem = DIAS[(agora.getDay() + 6) % 7];
+    var m = agora.getHours() * 60 + agora.getMinutes();
+
+    var lista = $("horarios");
+    var ordem = ["seg", "ter", "qua", "qui", "sex", "sab", "dom"];
+    for (var d = 0; d < ordem.length; d++){
+      var li = el("li", ordem[d] === hoje ? "hoje" : "");
+      li.appendChild(el("span", "", NOMES_DIAS[ordem[d]]));
+      li.appendChild(el("span", "", H[ordem[d]] ? hora(H[ordem[d]][0]) + " às " + hora(H[ordem[d]][1]) : "Fechado"));
+      lista.appendChild(li);
+    }
+    mostrar(lista, true);
+    mostrar($("horario-vazio"), false);
+
+    var aberto = false, fecha = "", abreHoje = "";
+    var hj = H[hoje], ot = H[ontem];
+    if (ot && minutos(ot[1]) <= minutos(ot[0]) && m < minutos(ot[1])){ aberto = true; fecha = ot[1]; }
+    if (!aberto && hj){
+      var a = minutos(hj[0]), f = minutos(hj[1]);
+      if (f <= a){ if (m >= a){ aberto = true; fecha = hj[1]; } }
+      else if (m >= a && m < f){ aberto = true; fecha = hj[1]; }
+      if (!aberto && m < a) abreHoje = hj[0];
+    }
+    var st = $("status");
+    if (aberto){ st.textContent = "Aberto agora · fecha às " + hora(fecha); st.className = "status aberto"; }
+    else st.textContent = abreHoje ? "Fechado agora · abre hoje às " + hora(abreHoje) : "Fechado agora";
+    mostrar(st, true);
+  }
+
+  /* ---------- cardápio ---------- */
+  var itens = [];     // todos os itens, na ordem
+  var pedido = {};    // posição do item -> quantidade
+  var botoes = [];    // botão "+" de cada item
+  var main = $("cardapio");
+  var cats = $("cats");
+
+  function criarItem(item, nivel){
+    var id = itens.length;
+    itens.push(item);
+    var art = el("article", "item" + (item.destaque ? " destaque" : ""));
+    if (item.foto){
+      var img = el("img", "foto");
+      img.src = item.foto; img.alt = item.nome; img.loading = "lazy";
+      img.width = 84; img.height = 84;
+      art.appendChild(img);
+    }
+    var txt = el("div", "texto");
+    var nome = el(nivel, "nome", item.nome);
+    if (item.selo){
+      nome.appendChild(el("span", "selo" + (SELOS_VERDES[item.selo.toLowerCase()] ? " verde" : ""), item.selo));
+    }
+    txt.appendChild(nome);
+    if (item.descricao) txt.appendChild(el("p", "desc", item.descricao));
+    art.appendChild(txt);
+
+    var lado = el("div", "lado");
+    lado.appendChild(el("span", "preco", dinheiro(item.preco)));
+    var b = el("button", "add");
+    b.type = "button";
+    b.setAttribute("data-id", id);
+    b.setAttribute("aria-label", "Adicionar " + item.nome + " ao pedido");
+    b.appendChild(document.createTextNode("+"));
+    lado.appendChild(b);
+    botoes[id] = b;
+    art.appendChild(lado);
+    return art;
+  }
+
+  for (var c = 0; c < CONFIG.categorias.length; c++){
+    var cat = CONFIG.categorias[c];
+    var a = el("a", "", cat.titulo);
+    a.href = "#" + cat.id;
+    cats.appendChild(a);
+
+    var sec = el("section", "secao" + (cat.compacto ? " compacto" : ""));
+    sec.id = cat.id;
+    sec.appendChild(el("h2", "", cat.titulo));
+    if (cat.nota) sec.appendChild(el("p", "nota", cat.nota));
+
+    var grupos = cat.grupos || [{ titulo: "", itens: cat.itens || [] }];
+    for (var g = 0; g < grupos.length; g++){
+      if (grupos[g].titulo) sec.appendChild(el("h3", "grupo-titulo", grupos[g].titulo));
+      var grade = el("div", "grade");
+      for (var i = 0; i < grupos[g].itens.length; i++){
+        grade.appendChild(criarItem(grupos[g].itens[i], grupos[g].titulo ? "h4" : "h3"));
+      }
+      sec.appendChild(grade);
+    }
+    main.appendChild(sec);
+  }
+
+  /* ---------- meu pedido ---------- */
+  var folha = $("folha"), fundo = $("fundo"), abrir = $("abrir-pedido");
+
+  function contar(){
+    var qtd = 0, total = 0;
+    for (var id in pedido){ qtd += pedido[id]; total += pedido[id] * itens[id].preco; }
+    return { qtd: qtd, total: total };
+  }
+
+  function mensagem(){
+    var linhas = [];
+    for (var id in pedido){
+      linhas.push(pedido[id] + "x " + itens[id].nome + " (" + dinheiro(pedido[id] * itens[id].preco).replace(" ", " ") + ")");
+    }
+    return "Olá, " + CONFIG.nome + "! Gostaria de fazer este pedido:\n\n" + linhas.join("\n") +
+      "\n\nTotal: " + dinheiro(contar().total).replace(" ", " ") + "\n\nObrigado!";
+  }
+
+  function desenharFolha(){
+    var box = $("pedido-linhas");
+    box.innerHTML = "";
+    for (var id in pedido){
+      var it = itens[id];
+      var linha = el("div", "linha-pedido");
+      linha.appendChild(el("span", "n", it.nome));
+      var ctr = el("div", "controles");
+      var menos = el("button", "", "−");
+      menos.type = "button"; menos.setAttribute("data-menos", id);
+      menos.setAttribute("aria-label", "Tirar um " + it.nome);
+      var mais = el("button", "", "+");
+      mais.type = "button"; mais.setAttribute("data-mais", id);
+      mais.setAttribute("aria-label", "Mais um " + it.nome);
+      ctr.appendChild(menos);
+      ctr.appendChild(el("span", "", String(pedido[id])));
+      ctr.appendChild(mais);
+      linha.appendChild(ctr);
+      linha.appendChild(el("span", "sub", dinheiro(pedido[id] * it.preco)));
+      box.appendChild(linha);
+    }
+    $("pedido-total").textContent = dinheiro(contar().total);
+    if (CONFIG.whatsapp){ $("pedido-whats").href = linkWhats(mensagem()); mostrar($("pedido-whats"), true); }
+  }
+
+  function atualizar(){
+    for (var id = 0; id < botoes.length; id++){
+      var b = botoes[id], q = pedido[id] || 0;
+      var badge = b.querySelector(".qtd");
+      if (q && !badge){ badge = el("span", "qtd"); b.appendChild(badge); }
+      if (badge){ if (q) badge.textContent = q; else b.removeChild(badge); }
+      b.setAttribute("aria-label", "Adicionar " + itens[id].nome + " ao pedido" + (q ? " (" + q + " no pedido)" : ""));
+    }
+    var t = contar();
+    $("barra-qtd").textContent = "Ver meu pedido · " + t.qtd + (t.qtd === 1 ? " item" : " itens");
+    $("barra-total").textContent = dinheiro(t.total);
+    mostrar($("barra"), t.qtd > 0);
+    if (t.qtd > 0) document.body.className += document.body.className.indexOf("com-pedido") < 0 ? " com-pedido" : "";
+    else document.body.className = document.body.className.replace(/\s*com-pedido/g, "");
+    if (!folha.hasAttribute("hidden")){
+      if (t.qtd === 0) fecharFolha(); else desenharFolha();
+    }
+  }
+
+  function mudar(id, n){
+    var q = (pedido[id] || 0) + n;
+    if (q > 0) pedido[id] = q; else delete pedido[id];
+    atualizar();
+  }
+
+  function abrirFolha(){
+    desenharFolha();
+    mostrar(fundo, true); mostrar(folha, true);
+    document.body.className += " travado";
+    $("fechar-pedido").focus();
+  }
+  function fecharFolha(){
+    mostrar(fundo, false); mostrar(folha, false);
+    document.body.className = document.body.className.replace(/\s*travado/g, "");
+    if (!$("barra").hasAttribute("hidden")) abrir.focus();
+  }
+
+  main.addEventListener("click", function(e){
+    var b = e.target;
+    while (b && b !== main && !(b.getAttribute && b.getAttribute("data-id") !== null)) b = b.parentNode;
+    if (b && b !== main) mudar(parseInt(b.getAttribute("data-id"), 10), 1);
+  });
+  $("pedido-linhas").addEventListener("click", function(e){
+    var t = e.target;
+    if (t.getAttribute("data-mais") !== null) mudar(parseInt(t.getAttribute("data-mais"), 10), 1);
+    else if (t.getAttribute("data-menos") !== null) mudar(parseInt(t.getAttribute("data-menos"), 10), -1);
+  });
+  abrir.addEventListener("click", abrirFolha);
+  $("fechar-pedido").addEventListener("click", fecharFolha);
+  fundo.addEventListener("click", fecharFolha);
+  $("limpar-pedido").addEventListener("click", function(){ pedido = {}; atualizar(); });
+  document.addEventListener("keydown", function(e){
+    if ((e.key === "Escape" || e.keyCode === 27) && !folha.hasAttribute("hidden")) fecharFolha();
+  });
+
+  /* ---------- destaca no menu a categoria que está na tela ---------- */
+  if ("IntersectionObserver" in window){
+    var links = cats.getElementsByTagName("a");
+    var obs = new IntersectionObserver(function(ents){
+      for (var k = 0; k < ents.length; k++){
+        if (!ents[k].isIntersecting) continue;
+        var alvo = "#" + ents[k].target.id;
+        for (var j = 0; j < links.length; j++){
+          var ativo = links[j].getAttribute("href") === alvo;
+          links[j].className = ativo ? "ativa" : "";
+          if (ativo) cats.scrollLeft = links[j].offsetLeft - (cats.clientWidth - links[j].offsetWidth) / 2;
+        }
+      }
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    var secoes = main.getElementsByTagName("section");
+    for (var s = 0; s < secoes.length; s++) obs.observe(secoes[s]);
+  }
+})();
+</script>
+</body>
+</html>
