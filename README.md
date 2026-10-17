@@ -57,7 +57,8 @@ Depois de editar, abra o `index.html` no navegador para conferir e suba de novo 
 - [ ] História real da casa para a seção "A casa" (quando abriu, quem está por trás, o que inspirou)
 - [ ] Cardápio das batatas
 - [ ] Horário de funcionamento
-- [ ] WhatsApp e Instagram da loja
+- [x] WhatsApp da loja: (61) 99374-4996
+- [ ] Instagram da loja
 - [ ] Endereço completo
 - [ ] Confirmar como funciona o pedido (balcão, mesa ou WhatsApp)
 - [ ] Tamanho das bebidas (lata, 600 ml, long neck...)

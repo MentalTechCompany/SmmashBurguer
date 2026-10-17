@@ -959,7 +959,7 @@ var CONFIG = {
 
   // WhatsApp: só números, com 55 + DDD. Ex.: "5561999998888"
   // Enquanto estiver vazio, os botões de WhatsApp ficam escondidos.
-  whatsapp: "", // PROVISÓRIO
+  whatsapp: "5561993744996", // (61) 99374-4996
 
   // Instagram: só o nome do perfil, sem @. Ex.: "smmashburger". Vazio = escondido.
   instagram: "", // PROVISÓRIO
@@ -1120,6 +1120,9 @@ var CONFIG = {
   if (CONFIG.whatsapp){
     var oi = "Olá, " + CONFIG.nome + "! Vim pelo site.";
     $("link-whats").href = linkWhats(oi);
+    // mostra o número escrito: 5561993744996 -> (61) 99374-4996
+    var tel = CONFIG.whatsapp.replace(/^55/, "");
+    if (tel.length >= 10) $("link-whats").textContent = "WhatsApp (" + tel.slice(0, 2) + ") " + tel.slice(2, -4) + "-" + tel.slice(-4);
     $("whats-flutuante").href = linkWhats(oi);
     mostrar($("link-whats"), true);
     mostrar($("whats-flutuante"), true);
