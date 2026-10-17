@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smmash Burger | Cardápio</title>
-<meta name="description" content="Cardápio da Smmash Burger em Brasília: smmash burgers no pão brioche, combos, adicionais, bebidas e sobremesas, com preços.">
-<meta name="theme-color" content="#F7941D">
+<title>Smmash Burger | Cardápio e a casa</title>
+<meta name="description" content="Smmash Burger em Brasília: smmash de 90g bem prensado no pão brioche. Veja o cardápio com preços, conheça a casa e saiba como chegar.">
+<meta name="theme-color" content="#1E1A16">
 <!-- Prévia do link quando alguém compartilha no WhatsApp/Instagram -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Smmash Burger">
-<meta property="og:title" content="Smmash Burger | Cardápio">
-<meta property="og:description" content="Smmash de 90g bem prensado no pão brioche. Veja o cardápio completo com preços.">
+<meta property="og:title" content="Smmash Burger | Cardápio e a casa">
+<meta property="og:description" content="Smmash de 90g bem prensado no pão brioche. Veja o cardápio completo com preços e conheça a casa.">
 <meta property="og:url" content="https://smmashburguer.netlify.app/">
 <!-- PROVISÓRIO: quando tiver uma foto boa de lanche (1200x630), suba junto com o site e descomente a linha abaixo -->
 <!-- <meta property="og:image" content="https://smmashburguer.netlify.app/compartilhar.jpg"> -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F7941D'/%3E%3Ctext x='32' y='49' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' text-anchor='middle' fill='%23D6281E'%3ES%3C/text%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' text-anchor='middle' fill='%23ffffff'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script>document.documentElement.className += " js";</script>
 <style>
 /* ============================================================
    CORES DO SITE — troque aqui para mudar a identidade toda
@@ -28,50 +29,146 @@
   --ketchup:#D6281E;
   --carvao:#1E1A16;
   --papel:#FFFDF7;
+  --creme:#F4EEDD;
   --picles:#2F7D32;
   --linha:#E6DFCF;
   --suave:#6E665C;
   --whats:#25D366;
+
+  --texto:"Archivo",system-ui,sans-serif;
+  --rabisco:"Permanent Marker","Comic Sans MS",cursive;
+  --topo-h:60px;
+  --margem:16px;
+  --mola:cubic-bezier(.2,.9,.3,1.25);
+  --suave-saida:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none !important}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font-family:"Archivo",system-ui,sans-serif;
+  font-family:var(--texto);
   font-variation-settings:"wdth" 100;
   background:var(--papel);color:var(--carvao);
   line-height:1.5;-webkit-font-smoothing:antialiased;
-  padding-bottom:24px;
 }
-body.com-pedido{padding-bottom:96px}
+body.com-pedido{padding-bottom:88px}
 body.travado{overflow:hidden}
+@media (min-width:900px){ :root{--margem:24px} }
+.topo-inner,.hero-inner,.cardapio-topo,.cardapio-lista,.casa-inner,.processo-inner,.visite-inner,.rodape-inner{
+  max-width:calc(1120px + 2 * var(--margem));margin-left:auto;margin-right:auto;
+  padding-left:var(--margem);padding-right:var(--margem);
+}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-:focus-visible{outline:3px solid var(--ketchup);outline-offset:2px}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ketchup);outline-offset:3px}
+
+/* textos de apoio usados em várias seções */
+.sobretitulo{
+  display:inline-block;font-family:var(--rabisco);font-size:22px;line-height:1.2;
+  color:var(--ketchup);transform:rotate(-2deg);margin-bottom:6px;
+}
+.titulo-secao{
+  font-weight:900;font-variation-settings:"wdth" 125;
+  font-size:clamp(46px,11vw,112px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;
+}
+.botao{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 22px;border-radius:999px;text-decoration:none;
+  font-weight:800;font-size:16px;line-height:1.2;
+  border:2px solid var(--carvao);
+  transition:transform .2s var(--suave-saida),box-shadow .2s var(--suave-saida);
+}
+.botao svg{width:18px;height:18px;margin-left:8px;flex:0 0 auto}
+.botao-escuro{background:var(--carvao);color:var(--papel);box-shadow:4px 4px 0 var(--ketchup)}
+.botao-claro{background:var(--papel);color:var(--carvao);box-shadow:4px 4px 0 var(--carvao)}
+@media (hover:hover){
+  .botao:hover{transform:translate(-2px,-2px)}
+  .botao-escuro:hover{box-shadow:6px 6px 0 var(--ketchup)}
+  .botao-claro:hover{box-shadow:6px 6px 0 var(--carvao)}
+}
+.botao:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--carvao)}
+
+/* textura de papel (granulado) */
+.grao:after{
+  content:"";position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.16;
+}
+
+/* link para quem navega pelo teclado */
+.pular{position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 16px;border-radius:999px;background:var(--carvao);color:var(--papel);font-weight:800}
+.pular:focus{left:16px}
 
 /* aviso de prévia */
-.previa{background:var(--carvao);color:var(--papel);font-size:13px;text-align:center;padding:8px 16px}
+.previa{background:var(--ketchup);color:#fff;font-size:13px;font-weight:600;text-align:center;padding:8px 16px}
 
-/* ---------- TOPO ---------- */
-.hero{background:var(--mostarda);padding:28px 16px 24px;overflow:hidden}
-.hero-inner{max-width:960px;margin:0 auto}
+/* ---------- TOPO (barra fixa) ---------- */
+.topo{
+  position:sticky;top:0;z-index:25;height:var(--topo-h);
+  background:var(--carvao);color:var(--papel);
+  transition:transform .35s var(--suave-saida);
+}
+body.topo-oculto .topo{transform:translateY(-100%)}
+.topo-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.logo-selo{
+  width:34px;height:34px;border-radius:10px;background:var(--mostarda);margin-right:10px;
+  font-weight:900;font-variation-settings:"wdth" 125;font-size:24px;line-height:36px;text-align:center;
+  color:#fff;text-shadow:0 2px 0 var(--ketchup);
+}
+.logo-texto{font-weight:900;font-variation-settings:"wdth" 125;font-size:20px;letter-spacing:.01em;color:var(--mostarda)}
+.menu-topo{display:flex;align-items:center}
+.menu-topo a{
+  position:relative;margin-left:18px;text-decoration:none;font-weight:700;font-size:15px;padding:6px 0;
+  color:var(--papel);white-space:nowrap;
+}
+.menu-topo a:after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:var(--mostarda);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .3s var(--suave-saida);
+}
+.menu-topo a.ativo:after{transform:scaleX(1)}
+@media (hover:hover){ .menu-topo a:hover:after{transform:scaleX(1)} }
+.so-grande{display:none}
+@media (max-width:399px){
+  .logo-texto{display:none}
+}
+@media (min-width:760px){
+  .so-grande{display:inline}
+  .menu-topo a{margin-left:28px;font-size:16px}
+}
+
+/* ---------- ABERTURA (hero) ---------- */
+.hero{position:relative;overflow:hidden;background:var(--mostarda);padding-top:28px}
+.hero:before{
+  content:"";position:absolute;top:0;right:0;bottom:0;width:70%;pointer-events:none;
+  background-image:radial-gradient(rgba(214,40,30,.25) 2px,transparent 2.6px);
+  background-size:16px 16px;
+  -webkit-mask-image:linear-gradient(100deg,transparent 10%,#000 85%);
+  mask-image:linear-gradient(100deg,transparent 10%,#000 85%);
+}
+.hero-inner{position:relative;z-index:1}
 .marca{
   font-weight:900;
   font-variation-settings:"wdth" 125;
-  font-size:clamp(50px,14vw,150px);
+  font-size:clamp(46px,15vw,136px);
   line-height:.82;letter-spacing:-.02em;
-  color:#fff;text-shadow:0 4px 0 var(--ketchup);
-  transform-origin:50% 100%;
-  animation:smash .9s cubic-bezier(.2,.9,.3,1.2) both;
+  color:#fff;text-shadow:0 5px 0 var(--ketchup);
 }
-.marca span{display:block}
+.marca span{display:block;transform-origin:50% 100%;animation:smash .9s var(--mola) both}
+.marca span + span{animation-delay:.12s}
 @keyframes smash{
-  0%{transform:translateY(-40px) scaleY(1.5) scaleX(.9);opacity:0}
-  45%{transform:translateY(0) scaleY(.72) scaleX(1.08);opacity:1}
+  0%{transform:translateY(-50px) scaleY(1.5) scaleX(.9);opacity:0}
+  45%{transform:translateY(0) scaleY(.7) scaleX(1.08);opacity:1}
   70%{transform:scaleY(1.06) scaleX(.98)}
   100%{transform:none}
 }
-.chapa{height:10px;background:var(--ketchup);border-radius:3px;margin:12px 0 16px;max-width:560px}
-.slogan{font-size:clamp(16px,2.2vw,20px);max-width:38ch;font-weight:500}
+.chapa{
+  height:12px;max-width:520px;margin:16px 0 18px;border-radius:3px;background:var(--ketchup);
+  transform-origin:0 50%;animation:esticar .7s var(--suave-saida) .35s both;
+}
+@keyframes esticar{from{transform:scaleX(0)}to{transform:none}}
+.slogan{font-size:clamp(17px,2vw,21px);font-weight:600;max-width:34ch}
 .status{
   display:inline-block;margin-top:14px;padding:6px 14px;border-radius:999px;
   background:var(--carvao);color:var(--papel);font-weight:800;font-size:14px;
@@ -79,93 +176,384 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .status.aberto:before{
   content:"";display:inline-block;width:9px;height:9px;border-radius:50%;
   background:#6BE07A;margin-right:8px;vertical-align:1px;
+  animation:pulsar 1.6s ease-in-out infinite;
 }
-.como-pedir{margin-top:12px;font-size:15px;font-weight:600;max-width:48ch}
+@keyframes pulsar{50%{box-shadow:0 0 0 5px rgba(107,224,122,.25)}}
+.acoes{display:flex;flex-wrap:wrap;margin-top:22px}
+.acoes .botao{margin:0 12px 12px 0}
+@media (max-width:479px){ .acoes .botao{padding:13px 14px;margin-right:10px;font-size:15px} }
+.surgir{animation:surgir .7s var(--suave-saida) both}
+.hero .slogan{animation-delay:.45s}
+.hero .status{animation-delay:.55s}
+.hero .acoes{animation-delay:.65s}
+@keyframes surgir{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-/* ---------- NAVEGAÇÃO DAS CATEGORIAS ---------- */
-.cats{position:sticky;top:0;z-index:10;background:var(--papel);border-bottom:1px solid var(--linha)}
+/* ilustração do lanche */
+.hero-arte{position:relative;max-width:360px;margin:12px auto 0}
+.burger{width:100%;height:auto;overflow:visible}
+.burger .camada{transform-box:fill-box;transform-origin:50% 100%;animation:cair .75s var(--mola) both}
+.burger .c1{animation-delay:.3s}
+.burger .c2{animation-delay:.42s}
+.burger .c3{animation-delay:.54s}
+.burger .c4{animation-delay:.66s}
+.burger .c5{animation-delay:.78s}
+.burger .c6{animation-delay:.9s}
+.burger .c7{animation-delay:1.02s}
+@keyframes cair{
+  0%{transform:translateY(-340px);opacity:0}
+  50%{transform:translateY(0) scaleY(.8) scaleX(1.06);opacity:1}
+  75%{transform:scaleY(1.05) scaleX(.98)}
+  100%{transform:none;opacity:1}
+}
+.burger .sombra{transform-box:fill-box;transform-origin:50% 50%;animation:esticar .6s var(--suave-saida) .35s both}
+.burger .explosao{transform-box:fill-box;transform-origin:50% 50%;animation:estourar .6s var(--mola) 1.45s both}
+.burger .explosao path{transform-box:fill-box;transform-origin:50% 50%;animation:girar 80s linear 2s infinite}
+@keyframes estourar{from{transform:scale(0) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes girar{to{transform:rotate(360deg)}}
+.burger .vapor path{opacity:0;animation:vapor 3.2s ease-in-out infinite}
+.burger .vapor path:nth-child(1){animation-delay:2s}
+.burger .vapor path:nth-child(2){animation-delay:2.7s}
+.burger .vapor path:nth-child(3){animation-delay:3.4s}
+@keyframes vapor{
+  0%{opacity:0;transform:translateY(12px)}
+  35%{opacity:.85}
+  100%{opacity:0;transform:translateY(-26px)}
+}
+.adesivo{
+  position:absolute;top:2%;right:-2%;z-index:2;
+  width:112px;height:112px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:var(--carvao);color:var(--mostarda);
+  font-family:var(--rabisco);font-size:18px;line-height:1.05;white-space:pre-line;
+  box-shadow:0 0 0 4px var(--mostarda),0 0 0 7px var(--carvao);
+  transform:rotate(-12deg);animation:carimbo .5s var(--mola) 1.75s both;
+}
+@keyframes carimbo{from{transform:scale(2.4) rotate(-40deg);opacity:0}to{transform:rotate(-12deg);opacity:1}}
+
+@media (min-width:900px){
+  .hero{padding-top:40px}
+  .hero-inner{
+    display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-column-gap:32px;align-items:center;
+    min-height:600px;min-height:min(calc(100vh - var(--topo-h)),780px);
+  }
+  .hero-texto{padding-bottom:48px}
+  .marca{font-size:clamp(64px,8.7vw,106px)}
+  .hero-arte{max-width:520px;width:100%;margin:0 0 0 auto;align-self:end}
+  .adesivo{width:136px;height:136px;font-size:22px;top:4%;right:0}
+}
+
+/* ---------- FAIXA QUE PASSA ---------- */
+.faixa{
+  overflow:hidden;white-space:nowrap;
+  background:var(--ketchup);color:#fff;
+  border-top:3px solid var(--carvao);border-bottom:3px solid var(--carvao);
+  padding:12px 0;
+}
+.faixa-trilho{display:inline-block;animation:rolar 38s linear infinite}
+.faixa span{
+  display:inline-block;vertical-align:middle;
+  font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;
+  font-size:clamp(20px,3vw,30px);line-height:1.2;
+}
+.faixa .sep{width:14px;height:14px;margin:0 22px;border-radius:50%;background:var(--mostarda);box-shadow:0 0 0 3px var(--carvao)}
+@keyframes rolar{to{transform:translateX(-50%)}}
+
+/* seções da página não ficam escondidas atrás da barra de cima */
+main > section{scroll-margin-top:var(--topo-h)}
+
+/* ---------- CARDÁPIO ---------- */
+.cardapio{position:relative;padding-top:56px}
+.cardapio-topo .titulo-secao{margin-bottom:14px}
+.como-pedir{font-size:17px;font-weight:600;max-width:52ch}
+.dica-add{margin-top:6px;color:var(--suave);font-size:15px}
+.dica-add b{
+  display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--carvao);color:var(--papel);
+  text-align:center;line-height:24px;font-size:16px;vertical-align:-1px;
+}
+
+.cats{
+  position:sticky;top:var(--topo-h);z-index:15;margin-top:24px;
+  background:var(--papel);border-top:2px solid var(--carvao);border-bottom:2px solid var(--carvao);
+  transition:top .35s var(--suave-saida);
+}
+body.topo-oculto .cats{top:0}
 .cats-inner{
-  max-width:960px;margin:0 auto;display:flex;
-  overflow-x:auto;padding:12px 8px 12px 16px;scrollbar-width:none;
+  max-width:calc(1120px + 2 * var(--margem));margin:0 auto;display:flex;
+  overflow-x:auto;padding:10px 8px 10px var(--margem);scrollbar-width:none;
   -webkit-overflow-scrolling:touch;
 }
 .cats-inner::-webkit-scrollbar{display:none}
 .cats a{
   flex:0 0 auto;margin-right:8px;text-decoration:none;color:var(--carvao);
-  font-weight:700;font-size:15px;padding:8px 16px;border-radius:999px;
-  background:#F4EEDD;
+  font-weight:800;font-size:15px;padding:7px 16px;border-radius:999px;
+  border:2px solid var(--carvao);background:var(--papel);
+  transition:background .2s,color .2s;
 }
-.cats a.ativa{background:var(--carvao);color:var(--papel)}
+.cats a.ativa{background:var(--carvao);color:var(--mostarda)}
 
-/* ---------- CARDÁPIO ---------- */
-main{max-width:960px;margin:0 auto;padding:0 16px}
-.secao{padding-top:36px;scroll-margin-top:64px}
-.secao h2{
-  font-weight:900;font-variation-settings:"wdth" 125;
-  font-size:clamp(30px,6vw,44px);line-height:1;
-  padding-bottom:12px;border-bottom:4px solid var(--carvao);
+.cardapio-lista{padding-bottom:24px}
+.secao{padding-top:44px;scroll-margin-top:calc(var(--topo-h) + 64px)}
+.secao-cabeca{
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;
+  padding-bottom:10px;border-bottom:4px solid var(--carvao);
 }
+.secao-cabeca h3{
+  font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;
+  font-size:clamp(34px,6vw,54px);line-height:.95;margin-right:16px;
+}
+.secao .rabisco{font-family:var(--rabisco);color:var(--ketchup);font-size:19px;line-height:1.3;transform:rotate(-3deg);margin-bottom:4px}
 .grupo-titulo{
-  margin-top:24px;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  margin-top:26px;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   color:var(--suave);
 }
-.item{display:flex;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--linha)}
+.nota{
+  margin-top:16px;padding:12px 16px;border-radius:14px;
+  background:#E9F3E4;color:#1F4D22;font-size:15px;font-weight:500;
+}
+
+.grade{display:grid;grid-gap:16px;margin-top:18px}
+@media (min-width:760px){
+  .grade{grid-template-columns:1fr 1fr;grid-gap:20px}
+}
+
+/* cartão de cada item */
+.item{
+  position:relative;display:flex;flex-direction:column;
+  padding:18px;border-radius:18px;background:#fff;
+  border:2px solid var(--carvao);box-shadow:4px 4px 0 var(--carvao);
+  transition:transform .2s var(--suave-saida),box-shadow .2s var(--suave-saida);
+}
+@media (hover:hover){
+  .item:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--carvao)}
+}
 .item .foto{
-  flex:0 0 auto;width:84px;height:84px;margin-right:14px;border-radius:12px;
-  object-fit:cover;background:#F4EEDD;
+  width:100%;height:190px;margin-bottom:14px;border-radius:12px;border:2px solid var(--carvao);
+  object-fit:cover;background:var(--creme);
 }
-.item .texto{flex:1 1 auto;min-width:0}
-.item .nome{font-size:19px;font-weight:800;font-variation-settings:"wdth" 112;line-height:1.2}
-.item .desc{color:var(--suave);font-size:15px;margin-top:4px;max-width:52ch}
-.item .lado{flex:0 0 auto;margin-left:12px;display:flex;align-items:center}
-.preco{font-weight:800;font-size:18px;white-space:nowrap}
+.item .nome{
+  font-size:21px;font-weight:900;font-variation-settings:"wdth" 112;line-height:1.15;
+}
+.item .num{
+  display:inline-block;margin-right:8px;font-family:var(--rabisco);font-weight:400;
+  font-size:17px;color:var(--ketchup);vertical-align:2px;
+}
+.item .desc{color:var(--suave);font-size:15px;margin-top:6px;max-width:52ch}
+.item .lado{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px}
+.preco{font-weight:900;font-variation-settings:"wdth" 112;font-size:21px;white-space:nowrap}
 .add{
-  position:relative;flex:0 0 auto;width:40px;height:40px;margin-left:10px;border-radius:50%;
-  background:var(--carvao);color:var(--papel);font-size:24px;font-weight:700;line-height:40px;text-align:center;
+  position:relative;flex:0 0 auto;width:44px;height:44px;margin-left:12px;border-radius:50%;
+  background:var(--carvao);color:var(--papel);font-size:26px;font-weight:700;line-height:44px;text-align:center;
+  transition:transform .15s var(--mola),background .2s;
 }
+@media (hover:hover){ .add:hover{background:var(--ketchup)} }
+.add:active{transform:scale(.88)}
+.add.pulou{animation:pulo .35s var(--mola)}
+@keyframes pulo{40%{transform:scale(1.18)}}
 .add .qtd{
-  position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;
-  background:var(--ketchup);color:#fff;font-size:12px;font-weight:800;line-height:20px;
+  position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;
+  background:var(--ketchup);color:#fff;font-size:12px;font-weight:800;line-height:22px;
+  box-shadow:0 0 0 2px #fff;
 }
 .selo{
-  display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;vertical-align:middle;
+  display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;vertical-align:3px;
   font-size:12px;font-weight:800;font-variation-settings:"wdth" 100;line-height:1.5;
   background:#FBE3D9;color:#A61E15;
 }
 .selo.verde{background:#E9F3E4;color:#1F4D22}
-.nota{margin-top:12px;padding:12px 14px;border-radius:12px;background:#E9F3E4;color:#1F4D22;font-size:15px}
 
-/* item em destaque (combo) */
+/* item em destaque (combo): vira um tíquete */
 .item.destaque{
-  margin-top:16px;padding:16px;border:0;border-radius:16px;background:#fff;
-  box-shadow:0 0 0 3px var(--ketchup);
+  grid-column:1/-1;padding:24px 22px;
+  background:var(--carvao);color:var(--papel);
+  box-shadow:6px 6px 0 var(--ketchup);
 }
-.item.destaque .nome{color:var(--ketchup);font-size:22px;font-variation-settings:"wdth" 120}
-.item.destaque .desc{color:var(--carvao);font-weight:600}
-.item.destaque .selo{display:table;margin:8px 0 0}
+@media (hover:hover){ .item.destaque:hover{box-shadow:8px 8px 0 var(--ketchup)} }
+.item.destaque:before,.item.destaque:after{
+  content:"";position:absolute;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;
+  background:var(--papel);border:2px solid var(--carvao);
+}
+.item.destaque:before{left:-12px}
+.item.destaque:after{right:-12px}
+.item.destaque .nome{
+  color:var(--mostarda);font-size:clamp(30px,6vw,46px);font-variation-settings:"wdth" 125;
+  text-transform:uppercase;line-height:.95;padding-right:90px;
+}
+.item.destaque .desc{color:var(--papel);font-weight:600;font-size:17px}
+.item.destaque .preco{font-size:34px;font-variation-settings:"wdth" 125}
+.item.destaque .add{background:var(--mostarda);color:var(--carvao)}
+.item.destaque .selo{
+  position:absolute;top:-16px;right:18px;margin:0;padding:6px 14px;
+  font-family:var(--rabisco);font-weight:400;font-size:17px;
+  background:var(--ketchup);color:#fff;border:2px solid var(--carvao);
+  transform:rotate(5deg);
+}
+@media (min-width:760px){
+  .item.destaque{flex-direction:row;align-items:center;padding:28px 36px}
+  .item.destaque .texto{flex:1 1 auto}
+  .item.destaque .lado{margin:0 0 0 32px;padding:0}
+  .item.destaque .nome{padding-right:0}
+}
 
 /* listas compactas (adicionais, bebidas) */
-.compacto .item{padding:10px 0;align-items:center}
-.compacto .item .nome{font-size:17px}
-.compacto .item .desc{font-size:14px;margin-top:2px}
-.compacto .preco{font-size:16px}
-.compacto .add{width:36px;height:36px;line-height:36px;font-size:22px}
-
-/* ---------- INFO / RODAPÉ ---------- */
-.info{
-  margin:56px auto 0;max-width:960px;padding:32px 16px;
-  display:grid;grid-gap:24px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  border-top:4px solid var(--carvao);
+.compacto .grade{grid-gap:0}
+@media (min-width:760px){ .compacto .grade{grid-column-gap:48px} }
+.compacto .item{
+  flex-direction:row;align-items:center;padding:12px 0;
+  background:none;border:0;border-bottom:2px dotted #CFC6B4;border-radius:0;box-shadow:none;
 }
-.info h4{font-weight:900;font-variation-settings:"wdth" 118;font-size:20px;margin-bottom:6px}
-.info a{color:var(--carvao);font-weight:700}
-.info .alergia{grid-column:1/-1;padding:12px 14px;border-radius:12px;background:#F4EEDD;font-size:15px}
+.compacto .item:hover{transform:none;box-shadow:none}
+.compacto .item .texto{flex:1 1 auto;min-width:0}
+.compacto .item .nome{font-size:17px;font-variation-settings:"wdth" 100;font-weight:800}
+.compacto .item .desc{font-size:14px;margin-top:2px}
+.compacto .item .lado{margin:0 0 0 12px;padding:0}
+.compacto .preco{font-size:17px}
+.compacto .add{width:38px;height:38px;line-height:38px;font-size:22px}
+
+.sem-js{margin:24px 0;padding:16px;border-radius:12px;background:var(--creme);font-weight:600}
+
+/* ---------- A CASA ---------- */
+.casa{position:relative;overflow:hidden;background:var(--carvao);color:var(--papel);padding:96px 0 104px;margin-top:56px}
+.casa.grao:after{opacity:.5;mix-blend-mode:overlay}
+.casa-fundo{
+  position:absolute;left:-2vw;bottom:-5vw;z-index:0;pointer-events:none;user-select:none;
+  font-weight:900;font-variation-settings:"wdth" 125;font-size:31vw;line-height:.8;letter-spacing:-.03em;
+  color:transparent;-webkit-text-stroke:2px rgba(247,148,29,.14);white-space:nowrap;
+}
+.casa-inner{position:relative;z-index:1}
+.casa .sobretitulo{color:var(--mostarda)}
+.titulo-casa{
+  font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;
+  font-size:clamp(40px,8.4vw,104px);line-height:.9;letter-spacing:-.015em;max-width:13ch;
+}
+.titulo-casa em{
+  font-style:normal;color:var(--mostarda);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20' preserveAspectRatio='none'%3E%3Cpath d='M3 13 C60 5 120 4 170 8 S260 14 297 6' fill='none' stroke='%23D6281E' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/100% .2em no-repeat;
+  padding-bottom:.08em;
+}
+.casa-grade{display:grid;grid-gap:40px;margin-top:44px}
+.casa-texto p{font-size:clamp(17px,1.7vw,20px);line-height:1.65;color:#EAE2D3;max-width:56ch}
+.casa-texto p + p{margin-top:16px}
+.casa-texto .botao{margin-top:28px}
+.casa .botao-claro{box-shadow:4px 4px 0 var(--mostarda)}
+@media (hover:hover){ .casa .botao-claro:hover{box-shadow:6px 6px 0 var(--mostarda)} }
+.numeros{list-style:none}
+.numeros li{display:flex;align-items:center;padding:18px 0;border-top:2px solid rgba(255,253,247,.16)}
+.numeros li:last-child{border-bottom:2px solid rgba(255,253,247,.16)}
+.numeros .valor{
+  flex:0 0 auto;min-width:2.5em;margin-right:18px;
+  font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(52px,7vw,84px);line-height:.9;
+  color:var(--mostarda);
+}
+.numeros .texto{font-size:17px;color:#EAE2D3;max-width:30ch}
+@media (min-width:900px){
+  .casa{padding:128px 0 136px}
+  .casa-grade{grid-template-columns:1.1fr .9fr;grid-column-gap:72px;align-items:start}
+}
+
+/* ---------- COMO FAZEMOS ---------- */
+.xadrez{
+  height:28px;border-bottom:3px solid var(--carvao);
+  background:repeating-conic-gradient(var(--ketchup) 0 25%,var(--papel) 0 50%) 0 0/28px 28px;
+}
+.processo{background:var(--papel);padding-bottom:96px}
+.processo-inner{padding-top:72px}
+.processo .intro{font-size:17px;font-weight:600;max-width:46ch;margin-top:14px}
+.passos{list-style:none;display:grid;grid-gap:20px;margin-top:36px}
+@media (min-width:640px){ .passos{grid-template-columns:1fr 1fr} }
+@media (min-width:1000px){ .passos{grid-template-columns:repeat(4,1fr)} }
+.passo{
+  overflow:hidden;border-radius:18px;background:#fff;
+  border:2px solid var(--carvao);box-shadow:4px 4px 0 var(--carvao);
+}
+.passo-arte{position:relative;background:var(--mostarda);border-bottom:2px solid var(--carvao);padding:14px 16px 6px}
+.passo-arte svg{width:100%;height:auto;max-width:240px;margin:0 auto;overflow:visible}
+.passo-n{
+  position:absolute;top:10px;left:12px;font-family:var(--rabisco);font-size:22px;line-height:1;color:var(--carvao);
+}
+.passo-corpo{padding:18px 18px 22px}
+.passo h3{font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:26px;line-height:1}
+.passo p{color:var(--suave);font-size:15px;margin-top:8px}
+
+/* animações das ilustrações dos passos (só quando aparecem na tela) */
+.passo .fogo path{transform-box:fill-box;transform-origin:50% 100%}
+.passo.visivel .fogo path{animation:fogo 1.1s ease-in-out infinite alternate}
+.passo.visivel .fogo path:nth-child(2){animation-delay:.3s}
+.passo.visivel .fogo path:nth-child(3){animation-delay:.6s}
+@keyframes fogo{from{transform:scaleY(.75);opacity:.7}to{transform:scaleY(1.1);opacity:1}}
+.passo .bola,.passo .espatula,.passo .amassada,.passo .faisca circle,.passo .tampa{transform-box:fill-box}
+.passo.visivel .bola{transform-origin:50% 100%;animation:quicar 1.4s var(--suave-saida) infinite}
+@keyframes quicar{0%,100%{transform:none}15%{transform:scaleY(.9) scaleX(1.06)}45%{transform:translateY(-14px)}75%{transform:none}}
+.passo.visivel .espatula{animation:prensar 1.8s var(--suave-saida) infinite}
+@keyframes prensar{0%,100%{transform:translateY(-12px)}35%,55%{transform:translateY(2px)}}
+.passo.visivel .amassada{transform-origin:50% 100%;animation:amassar 1.8s var(--suave-saida) infinite}
+@keyframes amassar{0%,100%{transform:scaleX(.82) scaleY(1.25)}35%,55%{transform:scaleX(1.06) scaleY(.85)}}
+.passo .faisca circle{opacity:0}
+.passo.visivel .faisca circle{animation:faisca 1.4s ease-out infinite}
+.passo.visivel .faisca circle:nth-child(2){animation-delay:.35s}
+.passo.visivel .faisca circle:nth-child(3){animation-delay:.7s}
+.passo.visivel .faisca circle:nth-child(4){animation-delay:1.05s}
+@keyframes faisca{0%{opacity:0;transform:none}20%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+.passo.visivel .tampa{transform-origin:50% 100%;animation:tampa 2.4s var(--mola) infinite}
+@keyframes tampa{0%,60%,100%{transform:none}25%{transform:translateY(-14px) rotate(-6deg)}}
+
+.do-seu-jeito{
+  position:relative;margin-top:36px;padding:26px 22px;border-radius:18px;
+  background:var(--ketchup);color:#fff;border:2px solid var(--carvao);box-shadow:5px 5px 0 var(--carvao);
+}
+.do-seu-jeito h3{font-family:var(--rabisco);font-weight:400;font-size:30px;line-height:1.1;transform:rotate(-1.5deg);display:inline-block}
+.do-seu-jeito p{font-size:17px;font-weight:600;margin-top:10px;max-width:62ch}
+.do-seu-jeito .botao{margin-top:18px}
+@media (min-width:900px){
+  .do-seu-jeito{display:flex;align-items:center;justify-content:space-between;padding:30px 36px}
+  .do-seu-jeito .botao{margin:0 0 0 32px;flex:0 0 auto}
+}
+
+/* ---------- VISITE ---------- */
+.visite{position:relative;overflow:hidden;background:var(--mostarda);padding:88px 0 96px;border-top:3px solid var(--carvao)}
+.visite-inner{position:relative;z-index:1}
+.visite .sobretitulo{color:var(--carvao)}
+.visite-grade{display:grid;grid-gap:20px;margin-top:36px}
+@media (min-width:640px){ .visite-grade{grid-template-columns:1fr 1fr} }
+@media (min-width:1000px){ .visite-grade{grid-template-columns:repeat(3,1fr)} }
+.cartao{
+  padding:22px;border-radius:18px;background:var(--papel);
+  border:2px solid var(--carvao);box-shadow:5px 5px 0 var(--carvao);
+}
+.cartao h3{
+  font-weight:900;font-variation-settings:"wdth" 120;text-transform:uppercase;font-size:22px;line-height:1.1;
+  margin-bottom:10px;
+}
+.cartao p{font-size:16px}
+.cartao .botao{margin-top:16px}
+.cartao .status{margin:0 0 12px}
 .horarios{list-style:none}
-.horarios li{display:flex;justify-content:space-between;max-width:240px}
+.horarios li{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--linha)}
 .horarios li.hoje{font-weight:800}
-.links-contato a{display:inline-block;margin:0 16px 6px 0}
-footer{text-align:center;color:var(--suave);font-size:13px;padding:24px 16px 8px}
-.sem-js{max-width:960px;margin:24px auto;padding:16px;border-radius:12px;background:#F4EEDD;font-weight:600}
+.links-contato a{display:inline-block;margin:0 16px 8px 0;font-weight:800}
+.alergia{
+  margin-top:24px;padding:14px 18px;border-radius:14px;
+  background:var(--carvao);color:var(--papel);font-size:15px;font-weight:600;
+}
+
+/* ---------- RODAPÉ ---------- */
+.rodape{background:var(--carvao);color:#CFC6B4;padding:56px 0 32px;overflow:hidden}
+.rodape-marca{
+  font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;
+  font-size:clamp(46px,15vw,186px);line-height:.85;letter-spacing:-.02em;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:2px var(--mostarda);
+}
+.rodape-links{display:flex;flex-wrap:wrap;margin-top:28px}
+.rodape-links a{margin:0 22px 10px 0;font-weight:700;color:var(--papel);text-decoration:none}
+@media (hover:hover){ .rodape-links a:hover{color:var(--mostarda)} }
+.rodape-fim{display:flex;flex-wrap:wrap;justify-content:space-between;margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,253,247,.14);font-size:14px}
+.rodape-fim p{margin-bottom:6px}
+
+/* ---------- APARECER AO ROLAR ---------- */
+.js .revelar{opacity:0;transform:translateY(28px);transition:opacity .8s var(--suave-saida),transform .8s var(--suave-saida)}
+.js .revelar.visivel{opacity:1;transform:none}
+.js .revelar.d1{transition-delay:.1s}
+.js .revelar.d2{transition-delay:.2s}
+.js .revelar.d3{transition-delay:.3s}
 
 /* ---------- WHATSAPP ---------- */
 .icone{width:22px;height:22px;flex:0 0 auto}
@@ -173,14 +561,15 @@ footer{text-align:center;color:var(--suave);font-size:13px;padding:24px 16px 8px
   display:flex;align-items:center;justify-content:center;width:100%;
   padding:14px 20px;border-radius:999px;text-decoration:none;
   background:var(--whats);color:var(--carvao);font-weight:800;font-size:16px;
+  border:2px solid var(--carvao);
 }
 .btn-whats .icone{margin-right:8px}
 .whats-flutuante{
   position:fixed;right:16px;bottom:16px;z-index:20;
-  width:56px;height:56px;border-radius:50%;
+  width:58px;height:58px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  background:var(--whats);color:var(--carvao);
-  box-shadow:0 6px 18px rgba(30,26,22,.28);
+  background:var(--whats);color:var(--carvao);border:2px solid var(--carvao);
+  box-shadow:3px 3px 0 var(--carvao);
 }
 .whats-flutuante .icone{width:28px;height:28px}
 body.com-pedido .whats-flutuante{display:none} /* com pedido aberto, o WhatsApp fica dentro da lista */
@@ -189,91 +578,335 @@ body.com-pedido .whats-flutuante{display:none} /* com pedido aberto, o WhatsApp 
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 16px 16px;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
 .barra button{
   display:flex;align-items:center;justify-content:space-between;
-  width:100%;max-width:560px;margin:0 auto;padding:14px 20px;border-radius:999px;
+  width:100%;max-width:560px;margin:0 auto;padding:15px 22px;border-radius:999px;
   background:var(--carvao);color:var(--papel);font-weight:800;font-size:16px;
-  box-shadow:0 6px 18px rgba(30,26,22,.3);
+  border:2px solid var(--carvao);box-shadow:4px 4px 0 var(--ketchup);
+  animation:surgir .4s var(--suave-saida) both;
 }
 .barra .total{color:var(--mostarda)}
-.fundo{position:fixed;top:0;left:0;right:0;bottom:0;z-index:30;background:rgba(30,26,22,.55)}
+.fundo{position:fixed;top:0;left:0;right:0;bottom:0;z-index:30;background:rgba(30,26,22,.6)}
 .folha{
   position:fixed;left:0;right:0;bottom:0;z-index:31;
   max-width:640px;max-height:85vh;margin:0 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;
-  background:var(--papel);border-radius:20px 20px 0 0;
-  padding:20px 16px 24px;padding-bottom:calc(24px + env(safe-area-inset-bottom));
+  background:#fff;border:2px solid var(--carvao);border-bottom:0;border-radius:22px 22px 0 0;
+  padding:20px 18px 24px;padding-bottom:calc(24px + env(safe-area-inset-bottom));
+  animation:subir-folha .35s var(--suave-saida) both;
 }
-.folha-topo{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.folha h2{font-weight:900;font-variation-settings:"wdth" 125;font-size:28px;line-height:1}
+@keyframes subir-folha{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.folha-topo{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:2px dashed var(--carvao)}
+.folha h2{font-weight:900;font-variation-settings:"wdth" 125;font-size:30px;line-height:1;text-transform:uppercase}
+.folha .rabisco{display:block;font-family:var(--rabisco);font-size:16px;color:var(--ketchup);margin-bottom:2px}
 .fechar{font-weight:700;text-decoration:underline;padding:8px 0 8px 12px}
 .linha-pedido{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--linha)}
 .linha-pedido .n{flex:1 1 auto;min-width:0;font-weight:700}
-.linha-pedido .sub{flex:0 0 auto;width:84px;text-align:right;font-weight:700;white-space:nowrap}
+.linha-pedido .sub{flex:0 0 auto;width:84px;text-align:right;font-weight:800;white-space:nowrap}
 .controles{flex:0 0 auto;display:flex;align-items:center;margin-left:8px}
 .controles button{
   width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--carvao);
   font-size:20px;font-weight:700;line-height:34px;text-align:center;
 }
 .controles span{display:inline-block;min-width:28px;text-align:center;font-weight:800}
-.total-pedido{display:flex;justify-content:space-between;padding:14px 0;font-size:20px;font-weight:900}
+.total-pedido{display:flex;justify-content:space-between;padding:16px 0 14px;font-size:22px;font-weight:900;font-variation-settings:"wdth" 118}
 .dica{color:var(--suave);font-size:15px;margin-bottom:16px}
 .limpar{display:block;margin:14px auto 0;color:var(--suave);text-decoration:underline;font-size:15px}
 
-@media (min-width:640px){
-  .compacto .grade{display:grid;grid-template-columns:1fr 1fr;grid-column-gap:40px}
-}
-@media (min-width:720px){
-  .hero{padding:56px 24px 40px}
-  .item{padding:22px 0}
-  .compacto .item{padding:12px 0}
-  .item .foto{width:104px;height:104px}
-}
+/* ---------- MOVIMENTO REDUZIDO ---------- */
 @media (prefers-reduced-motion:reduce){
-  .marca{animation:none}
   html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none !important;transition:none !important}
+  .js .revelar{opacity:1;transform:none}
+  .burger .vapor{display:none}
 }
 </style>
 </head>
 <body>
 
+<a class="pular" href="#cardapio">Pular para o cardápio</a>
 <div class="previa" id="previa" hidden></div>
 
-<header class="hero">
-  <div class="hero-inner">
-    <h1 class="marca" id="marca" aria-label="Smmash Burger"><span>SMMASH</span><span>BURGER</span></h1>
-    <div class="chapa" aria-hidden="true"></div>
-    <p class="slogan" id="slogan"></p>
-    <p class="status" id="status" hidden></p>
-    <p class="como-pedir" id="como-pedir"></p>
+<header class="topo" id="topo">
+  <div class="topo-inner">
+    <a class="logo" href="#inicio" aria-label="Smmash Burger, voltar ao início">
+      <span class="logo-selo" aria-hidden="true">S</span>
+      <span class="logo-texto" id="logo-texto" aria-hidden="true">SMMASH</span>
+    </a>
+    <nav class="menu-topo" id="menu-topo" aria-label="Seções do site">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#a-casa">A casa</a>
+      <a href="#como-fazemos" class="so-grande">Como fazemos</a>
+      <a href="#visite">Visite</a>
+    </nav>
   </div>
 </header>
 
-<nav class="cats" aria-label="Categorias do cardápio"><div class="cats-inner" id="cats"></div></nav>
+<main>
 
-<main id="cardapio">
-  <noscript><p class="sem-js">Não foi possível carregar o cardápio neste navegador. Peça o cardápio no balcão ou abra este link no Chrome ou no Safari.</p></noscript>
-</main>
+<!-- ============ ABERTURA ============ -->
+<section class="hero grao" id="inicio" aria-label="Abertura">
+  <div class="hero-inner">
+    <div class="hero-texto">
+      <h1 class="marca" id="marca" aria-label="Smmash Burger"><span>SMMASH</span><span>BURGER</span></h1>
+      <div class="chapa" aria-hidden="true"></div>
+      <p class="slogan surgir" id="slogan"></p>
+      <p class="status surgir" id="status" hidden></p>
+      <div class="acoes surgir">
+        <a class="botao botao-escuro" href="#cardapio">Ver cardápio
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="botao botao-claro" href="#a-casa">Conheça a casa</a>
+      </div>
+    </div>
 
-<section class="info" aria-label="Informações">
-  <div>
-    <h4>Onde estamos</h4>
-    <p><span id="endereco"></span><br><a id="link-mapa" href="#" target="_blank" rel="noopener">Como chegar</a></p>
+    <div class="hero-arte" aria-hidden="true">
+      <span class="adesivo" id="adesivo"></span>
+      <svg class="burger" viewBox="0 0 400 400">
+        <defs>
+          <linearGradient id="g-pao" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#EFA24A"/><stop offset="1" stop-color="#BF641E"/>
+          </linearGradient>
+          <linearGradient id="g-base" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#DB8B36"/><stop offset="1" stop-color="#B35A1B"/>
+          </linearGradient>
+        </defs>
+        <g class="explosao"><path d="M200 1 L224 38 L260 6 L272 49 L313 34 L311 79 L341 88 L332 123 L388 129 L350 166 L397 190 L339 212 L376 247 L328 255 L352 300 L306 296 L302 330 L265 317 L256 361 L225 345 L200 383 L178 330 L140 374 L136 316 L89 343 L101 289 L60 292 L61 261 L30 245 L59 212 L1 190 L46 166 L28 134 L59 118 L49 80 L92 82 L95 46 L128 49 L141 8 L175 34 Z" fill="#D6281E" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/></g>
+        <g transform="translate(0 8)" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+          <ellipse class="sombra" cx="200" cy="360" rx="160" ry="13" fill="#1E1A16" opacity=".28" stroke="none"/>
+          <!-- pão de baixo -->
+          <g class="camada c1">
+            <path d="M68 300 H332 Q340 300 338 310 L330 334 Q326 346 312 346 H88 Q74 346 70 334 L62 310 Q60 300 68 300 Z" fill="url(#g-base)"/>
+          </g>
+          <!-- carne 1 -->
+          <g class="camada c2">
+            <path d="M348 283 Q348 283 350 286 Q351 289 348 290 Q345 291 349 292 Q352 293 348 293 Q344 293 346 294 Q348 295 347 295 Q346 296 344 296 Q342 296 343 297 Q343 297 344 298 Q345 299 341 298 Q338 298 340 299 Q342 301 339 300 Q336 300 335 301 Q335 301 331 300 Q328 299 328 301 Q329 302 325 301 Q322 300 320 301 Q318 301 317 302 Q316 303 313 302 Q310 302 308 302 Q306 303 303 302 Q300 302 297 302 Q293 301 290 302 Q286 302 282 302 Q279 303 274 303 Q269 303 262 303 Q256 303 246 303 Q236 303 200 303 Q164 304 154 304 Q144 304 137 303 Q131 303 126 303 Q121 303 117 303 Q113 303 110 303 Q106 302 104 302 Q101 301 98 302 Q94 302 92 302 Q90 301 88 301 Q85 302 83 302 Q80 302 78 302 Q75 302 74 302 Q72 302 71 301 Q70 301 68 301 Q67 300 65 300 Q63 301 62 300 Q60 300 58 300 Q55 300 56 299 Q57 298 57 298 Q56 297 55 297 Q54 297 49 297 Q45 298 50 296 Q54 295 51 295 Q48 294 52 293 Q55 292 53 292 Q50 291 52 290 Q54 289 51 286 Q49 283 51 280 Q54 277 52 276 Q50 275 49 274 Q47 273 50 272 Q53 272 52 271 Q52 271 49 270 Q46 268 49 268 Q52 269 54 269 Q56 268 58 268 Q59 268 56 267 Q54 265 59 266 Q64 268 65 267 Q66 267 67 267 Q69 267 69 266 Q69 265 72 265 Q74 266 76 266 Q78 266 80 265 Q81 265 83 264 Q84 263 86 263 Q89 263 92 263 Q94 263 97 263 Q100 263 103 264 Q107 264 110 263 Q113 263 117 262 Q121 262 126 263 Q131 263 138 263 Q144 263 154 263 Q164 263 200 263 Q236 264 246 264 Q256 264 262 264 Q269 264 273 264 Q278 264 282 264 Q286 265 290 265 Q293 264 296 264 Q300 264 303 263 Q306 263 309 263 Q311 264 313 264 Q314 265 317 265 Q319 265 321 265 Q322 266 326 264 Q330 263 330 264 Q330 266 331 266 Q333 266 333 267 Q333 267 336 267 Q338 267 340 267 Q342 267 341 268 Q340 269 343 268 Q347 268 347 268 Q346 269 346 270 Q347 270 347 271 Q347 271 350 271 Q353 271 355 272 Q357 272 352 274 Q347 275 349 276 Z" fill="#6B3420"/>
+            <path d="M92 280 q18 -5 36 0 M158 276 q22 -5 44 0 M236 281 q20 -5 40 0" fill="none" stroke="#94512F" stroke-width="5"/>
+          </g>
+          <!-- queijo 1 -->
+          <g class="camada c3">
+            <path d="M74 256 H326 L336 266 L318 288 Q313 294 309 288 L300 270 H246 Q240 270 240 278 V290 Q240 298 232 298 Q224 298 224 290 V270 H124 L102 292 Q97 298 92 292 L66 266 Z" fill="#FFC21A"/>
+          </g>
+          <!-- carne 2 -->
+          <g class="camada c4">
+            <path d="M346 236 Q346 236 349 239 Q353 243 349 243 Q345 244 347 245 Q349 246 345 246 Q342 247 345 248 Q348 249 346 249 Q345 249 342 249 Q340 249 338 249 Q337 250 340 251 Q343 253 338 252 Q333 250 337 253 Q340 255 336 254 Q333 253 331 253 Q330 254 327 253 Q324 252 324 253 Q323 254 321 254 Q319 253 317 254 Q315 254 314 254 Q312 255 310 255 Q308 255 305 255 Q303 255 300 256 Q298 256 295 256 Q292 256 288 256 Q284 256 281 256 Q277 257 272 257 Q267 257 261 257 Q255 257 245 256 Q235 255 200 255 Q165 255 155 255 Q146 255 139 255 Q133 256 128 256 Q123 257 119 257 Q115 257 112 257 Q108 257 106 256 Q103 255 100 256 Q96 257 94 256 Q91 256 90 255 Q88 255 86 255 Q83 255 81 255 Q79 255 79 254 Q78 253 75 254 Q72 254 71 254 Q70 254 70 253 Q70 252 69 252 Q68 251 66 251 Q64 252 64 251 Q64 250 61 251 Q58 251 59 250 Q61 249 58 249 Q55 250 55 249 Q55 248 56 248 Q56 247 57 246 Q58 246 54 245 Q50 245 51 244 Q51 242 50 239 Q50 236 53 233 Q57 230 53 229 Q50 227 52 227 Q54 226 53 225 Q53 225 56 224 Q59 224 57 223 Q55 223 58 223 Q60 223 61 222 Q61 222 63 222 Q65 222 64 221 Q62 220 64 220 Q65 220 66 219 Q68 219 68 218 Q69 218 71 218 Q73 218 74 217 Q75 217 78 218 Q81 218 82 217 Q83 216 85 216 Q87 216 90 217 Q93 218 95 217 Q96 216 100 217 Q103 217 106 216 Q108 215 112 216 Q115 216 120 216 Q124 216 128 217 Q133 217 139 216 Q145 215 155 215 Q165 215 200 216 Q235 217 245 216 Q255 216 261 216 Q267 217 272 216 Q277 216 280 216 Q284 217 288 217 Q291 216 295 216 Q298 215 300 216 Q302 217 306 217 Q309 216 310 217 Q311 218 313 218 Q316 218 317 218 Q318 219 320 219 Q323 219 325 218 Q327 218 327 219 Q328 219 331 219 Q334 218 337 218 Q339 218 338 219 Q337 220 338 220 Q339 221 338 222 Q336 223 339 222 Q342 222 343 222 Q344 223 346 223 Q348 223 347 224 Q346 225 348 225 Q350 226 347 227 Q344 228 348 229 Z" fill="#6B3420"/>
+            <path d="M100 233 q20 -5 40 0 M176 229 q22 -5 44 0 M250 234 q18 -5 36 0" fill="none" stroke="#94512F" stroke-width="5"/>
+          </g>
+          <!-- queijo 2 -->
+          <g class="camada c5">
+            <path d="M80 208 H320 L332 218 L314 240 Q309 246 305 240 L296 222 H170 L164 236 Q160 244 156 236 L150 222 H112 L98 242 Q93 248 89 242 L70 218 Z" fill="#FFC21A"/>
+          </g>
+          <!-- molho e picles -->
+          <g class="camada c6">
+            <path d="M80 198 H320 Q330 206 318 212 Q306 216 298 211 Q288 222 278 212 Q262 216 250 211 Q240 224 228 212 H182 Q170 226 160 212 Q142 216 130 211 Q118 218 106 212 Q86 214 80 198 Z" fill="#E8573A" stroke-width="5"/>
+            <ellipse cx="140" cy="205" rx="30" ry="8" fill="#86AE3C" stroke-width="5"/>
+            <ellipse cx="262" cy="206" rx="28" ry="8" fill="#86AE3C" stroke-width="5"/>
+          </g>
+          <!-- pão de cima (brioche) -->
+          <g class="camada c7">
+            <path d="M66 190 Q62 116 132 86 Q200 58 268 86 Q338 116 334 190 Q334 202 322 202 H78 Q66 202 66 190 Z" fill="url(#g-pao)"/>
+            <path d="M104 132 Q126 102 168 92" fill="none" stroke="#FFF1D2" stroke-width="10" opacity=".75"/>
+            <circle cx="96" cy="152" r="5" fill="#FFF1D2" stroke="none" opacity=".75"/>
+          </g>
+          <!-- vapor -->
+          <g class="vapor" fill="none" stroke="#FFFDF7" stroke-width="6">
+            <path d="M160 64 q-12 -12 0 -24 q12 -12 0 -24"/>
+            <path d="M200 56 q-12 -12 0 -24 q12 -12 0 -24"/>
+            <path d="M240 64 q-12 -12 0 -24 q12 -12 0 -24"/>
+          </g>
+        </g>
+      </svg>
+    </div>
   </div>
-  <div>
-    <h4>Horário</h4>
-    <p id="horario-vazio">Horário a confirmar</p>
-    <ul class="horarios" id="horarios" hidden></ul>
-  </div>
-  <div>
-    <h4>Pagamento</h4>
-    <p id="pagamento"></p>
-  </div>
-  <div id="bloco-contato" hidden>
-    <h4>Fale com a gente</h4>
-    <p class="links-contato"><a id="link-whats" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a><a id="link-insta" href="#" target="_blank" rel="noopener" hidden>Instagram</a></p>
-  </div>
-  <p class="alergia" id="alergia" hidden></p>
 </section>
 
-<footer>Site feito por Mental Tech</footer>
+<div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
+
+<!-- ============ CARDÁPIO ============ -->
+<section class="cardapio" id="cardapio" aria-labelledby="cardapio-titulo">
+  <div class="cardapio-topo">
+    <p class="sobretitulo">O que sai da chapa</p>
+    <h2 class="titulo-secao" id="cardapio-titulo">Cardápio</h2>
+    <p class="como-pedir" id="como-pedir"></p>
+    <p class="dica-add">Toque no <b aria-hidden="true">+</b> para montar a sua lista de pedido.</p>
+  </div>
+  <nav class="cats" aria-label="Categorias do cardápio"><div class="cats-inner" id="cats"></div></nav>
+  <div class="cardapio-lista" id="cardapio-lista">
+    <noscript><p class="sem-js">Não foi possível carregar o cardápio neste navegador. Peça o cardápio no balcão ou abra este link no Chrome ou no Safari.</p></noscript>
+  </div>
+</section>
+
+<!-- ============ A CASA ============ -->
+<section class="casa grao" id="a-casa" aria-labelledby="casa-titulo">
+  <div class="casa-fundo" aria-hidden="true">SMMASH</div>
+  <div class="casa-inner">
+    <p class="sobretitulo revelar">A casa</p>
+    <h2 class="titulo-casa revelar d1" id="casa-titulo"></h2>
+    <div class="casa-grade">
+      <div class="casa-texto revelar d2">
+        <div id="casa-texto"></div>
+        <a class="botao botao-claro" href="#como-fazemos">Como fazemos</a>
+      </div>
+      <ul class="numeros revelar d3" id="numeros"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FAZEMOS ============ -->
+<section class="processo" id="como-fazemos" aria-labelledby="processo-titulo">
+  <div class="xadrez" aria-hidden="true"></div>
+  <div class="processo-inner">
+    <p class="sobretitulo revelar">Como fazemos</p>
+    <h2 class="titulo-secao revelar d1" id="processo-titulo">Do jeito smmash</h2>
+    <p class="intro revelar d2">Quatro passos, uma chapa bem quente e nenhum atalho.</p>
+
+    <ol class="passos">
+      <li class="passo revelar">
+        <div class="passo-arte">
+          <span class="passo-n" aria-hidden="true">01</span>
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <g class="bola">
+              <circle cx="100" cy="74" r="26" fill="#8A4A2C" stroke="#1E1A16" stroke-width="5"/>
+              <path d="M86 62 q6 -6 14 -6" fill="none" stroke="#B9724B" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="110" cy="84" r="3" fill="#5E2E1A"/><circle cx="92" cy="80" r="2.5" fill="#5E2E1A"/>
+            </g>
+            <rect x="14" y="100" width="172" height="14" rx="4" fill="#1E1A16"/>
+            <g class="fogo" fill="none" stroke="#D6281E" stroke-width="5" stroke-linecap="round">
+              <path d="M60 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M100 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M140 136 q-7 -6 0 -12 q6 -5 0 -10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="passo-corpo">
+          <h3>Bola</h3>
+          <p>O blend de 90g vai pra chapa em formato de bola.</p>
+        </div>
+      </li>
+      <li class="passo revelar d1">
+        <div class="passo-arte">
+          <span class="passo-n" aria-hidden="true">02</span>
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <ellipse class="amassada" cx="100" cy="91" rx="40" ry="9" fill="#8A4A2C" stroke="#1E1A16" stroke-width="5"/>
+            <g class="espatula" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M128 70 L150 38" fill="none"/>
+              <rect x="141" y="10" width="17" height="36" rx="7" transform="rotate(34 150 28)" fill="#8B5A2B"/>
+              <rect x="50" y="66" width="100" height="13" rx="3" fill="#D5D9DD"/>
+              <path d="M38 52 h-16 M42 66 h-22 M164 66 h18" fill="none" stroke="#FFFDF7" stroke-width="4"/>
+            </g>
+            <rect x="14" y="100" width="172" height="14" rx="4" fill="#1E1A16"/>
+            <g class="fogo" fill="none" stroke="#D6281E" stroke-width="5" stroke-linecap="round">
+              <path d="M60 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M100 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M140 136 q-7 -6 0 -12 q6 -5 0 -10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="passo-corpo">
+          <h3>Smmash!</h3>
+          <p>Prensa firme, de uma vez só. A carne espalha e encosta inteira na chapa quente.</p>
+        </div>
+      </li>
+      <li class="passo revelar d2">
+        <div class="passo-arte">
+          <span class="passo-n" aria-hidden="true">03</span>
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <g class="faisca" fill="#FFFDF7" stroke="#1E1A16" stroke-width="2">
+              <circle cx="58" cy="74" r="4"/><circle cx="96" cy="66" r="3.5"/><circle cx="128" cy="72" r="4"/><circle cx="150" cy="64" r="3"/>
+            </g>
+            <g transform="translate(0 -5)">
+              <path d="M160 94 Q160 94 163 96 Q167 98 164 99 Q161 100 162 100 Q163 101 163 101 Q162 102 162 102 Q162 103 159 102 Q157 102 156 102 Q156 102 156 103 Q156 103 155 104 Q153 104 152 104 Q151 103 149 104 Q148 104 148 105 Q147 105 145 105 Q143 105 141 105 Q139 105 136 105 Q134 104 131 104 Q128 105 123 105 Q118 104 100 104 Q82 105 77 105 Q72 104 69 104 Q66 104 64 105 Q61 106 59 105 Q57 105 56 105 Q54 104 53 104 Q52 104 50 104 Q49 104 48 103 Q47 103 45 104 Q43 104 42 104 Q41 104 39 104 Q37 104 38 103 Q39 102 37 102 Q36 102 38 101 Q41 100 38 100 Q34 100 37 99 Q40 98 35 96 Q30 94 34 92 Q39 90 38 89 Q37 88 38 88 Q40 88 37 87 Q35 86 39 86 Q43 87 42 86 Q41 85 41 85 Q41 84 42 84 Q44 84 45 84 Q46 84 47 84 Q48 83 49 83 Q51 84 52 83 Q54 83 56 84 Q58 84 60 84 Q62 84 64 83 Q66 82 69 83 Q72 83 77 83 Q82 83 100 84 Q118 84 123 83 Q128 82 131 82 Q134 83 137 83 Q139 83 141 83 Q143 83 145 83 Q147 83 148 83 Q149 83 151 83 Q153 83 154 83 Q155 83 155 84 Q155 85 156 85 Q157 85 159 85 Q160 85 159 86 Q158 87 160 86 Q162 86 164 87 Q165 87 165 88 Q164 88 162 89 Z" fill="#5A2A18" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M60 92 q14 -4 28 0 M108 90 q16 -4 32 0" fill="none" stroke="#8E4A2C" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <rect x="14" y="100" width="172" height="14" rx="4" fill="#1E1A16"/>
+            <g class="fogo" fill="none" stroke="#D6281E" stroke-width="5" stroke-linecap="round">
+              <path d="M60 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M100 136 q-7 -6 0 -12 q6 -5 0 -10"/><path d="M140 136 q-7 -6 0 -12 q6 -5 0 -10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="passo-corpo">
+          <h3>Crosta</h3>
+          <p>O contato com o ferro forma a crosta escura e crocante, com as bordinhas rendadas.</p>
+        </div>
+      </li>
+      <li class="passo revelar d3">
+        <div class="passo-arte">
+          <span class="passo-n" aria-hidden="true">04</span>
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <g stroke="#1E1A16" stroke-width="4" stroke-linejoin="round">
+              <path d="M58 88 H142 Q147 88 146 93 L142 99 Q140 102 135 102 H65 Q60 102 58 99 L54 93 Q53 88 58 88 Z" fill="#D98A35"/>
+              <rect x="48" y="76" width="104" height="14" rx="7" fill="#6B3420"/>
+              <path d="M56 72 H144 L150 78 L140 90 L134 80 H100 L96 88 Q94 92 92 88 L88 80 H66 L58 90 L50 78 Z" fill="#FFC21A"/>
+              <g class="tampa">
+                <path d="M100 12 V34" fill="none"/>
+                <path d="M100 12 L120 17 L100 22 Z" fill="#D6281E"/>
+                <path d="M56 68 Q54 44 80 36 Q100 30 120 36 Q146 44 144 68 Q144 74 138 74 H62 Q56 74 56 68 Z" fill="#E99A42"/>
+                <path d="M72 52 Q80 42 94 39" fill="none" stroke="#FFF1D2" stroke-width="5" stroke-linecap="round"/>
+              </g>
+            </g>
+            <rect x="14" y="102" width="172" height="12" rx="4" fill="#1E1A16"/>
+          </svg>
+        </div>
+        <div class="passo-corpo">
+          <h3>Montagem</h3>
+          <p>Queijo derretendo, molho da casa e pão brioche macio. Direto pra sua mão.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="do-seu-jeito revelar">
+      <div>
+        <h3>Do seu jeito</h3>
+        <p>Sem pão? Peça qualquer lanche no alface (Ammo Low Carb). Quer trocar a carne? Tem blend chicken e veggie. E dá pra turbinar com bacon, cheddar, cebola caramelizada e molho extra.</p>
+      </div>
+      <a class="botao botao-claro" href="#adicionais">Ver adicionais</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITE ============ -->
+<section class="visite grao" id="visite" aria-labelledby="visite-titulo">
+  <div class="visite-inner">
+    <p class="sobretitulo revelar">Visite</p>
+    <h2 class="titulo-secao revelar d1" id="visite-titulo">Bora de Smmash?</h2>
+    <div class="visite-grade">
+      <article class="cartao revelar">
+        <h3>Onde estamos</h3>
+        <p id="endereco"></p>
+        <a class="botao botao-escuro" id="link-mapa" href="#" target="_blank" rel="noopener">Como chegar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7m0 0H8m9 0v9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+      <article class="cartao revelar d1">
+        <h3>Horário</h3>
+        <p class="status" id="status-visite" hidden></p>
+        <p id="horario-vazio">Horário a confirmar</p>
+        <ul class="horarios" id="horarios" hidden></ul>
+      </article>
+      <article class="cartao revelar d2">
+        <h3>Pagamento</h3>
+        <p id="pagamento"></p>
+      </article>
+      <article class="cartao revelar d3" id="bloco-contato" hidden>
+        <h3>Fale com a gente</h3>
+        <p class="links-contato"><a id="link-whats" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a><a id="link-insta" href="#" target="_blank" rel="noopener" hidden>Instagram</a></p>
+      </article>
+    </div>
+    <p class="alergia revelar" id="alergia" hidden></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape-inner">
+    <div class="rodape-marca" id="rodape-marca" aria-hidden="true">SMMASH</div>
+    <nav class="rodape-links" aria-label="Atalhos">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#a-casa">A casa</a>
+      <a href="#como-fazemos">Como fazemos</a>
+      <a href="#visite">Visite</a>
+      <a id="rodape-insta" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+    </nav>
+    <div class="rodape-fim">
+      <p>© <span id="ano">2026</span> <span id="rodape-nome">Smmash Burger</span></p>
+      <p>Site feito por Mental Tech</p>
+    </div>
+  </div>
+</footer>
 
 <a class="whats-flutuante" id="whats-flutuante" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" hidden>
   <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.6 7.4c.3-.3.8-.3 1 .1l1 1.9c.2.3.1.7-.1 1l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.3-.3.7-.3 1-.1l1.9 1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4a10 10 0 0 1-5.1-5.1c-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
@@ -286,7 +919,10 @@ body.com-pedido .whats-flutuante{display:none} /* com pedido aberto, o WhatsApp 
 <div class="fundo" id="fundo" hidden></div>
 <div class="folha" id="folha" role="dialog" aria-modal="true" aria-labelledby="folha-titulo" hidden>
   <div class="folha-topo">
-    <h2 id="folha-titulo">Meu pedido</h2>
+    <div>
+      <span class="rabisco" aria-hidden="true">sua comanda</span>
+      <h2 id="folha-titulo">Meu pedido</h2>
+    </div>
     <button type="button" class="fechar" id="fechar-pedido">Fechar</button>
   </div>
   <div id="pedido-linhas"></div>
@@ -309,10 +945,16 @@ var CONFIG = {
   nome: "Smmash Burger",
   slogan: "Smmash de 90g bem prensado no pão brioche, com crosta crocante e muito queijo.",
 
-  // Frase que explica como pedir, aparece no topo do site
+  // Adesivo redondo ao lado do lanche, no topo. "\n" quebra a linha.
+  adesivo: "90g\nbem\nprensado!",
+
+  // Frases da faixa vermelha que passa logo abaixo do topo
+  faixa: ["Bem prensado", "Pão brioche", "Crosta crocante", "Muito queijo", "Molho da casa"],
+
+  // Frase que explica como pedir, aparece no começo do cardápio
   comoPedir: "Escolha aqui no cardápio e faça seu pedido no balcão.", // PROVISÓRIO: confirmar com o dono como o pedido funciona
 
-  // Faixa escura no topo. Deixe "" (vazio) para tirar depois da aprovação
+  // Faixa vermelha bem no alto da página. Deixe "" (vazio) para tirar depois da aprovação
   previa: "Prévia feita pela Mental Tech, com base nos cardápios do Google Maps (fev. 2026).",
 
   // WhatsApp: só números, com 55 + DDD. Ex.: "5561999998888"
@@ -334,17 +976,35 @@ var CONFIG = {
   //   sex: ["18:00","00:30"], sab: ["18:00","00:30"], dom: ["18:00","23:00"] }
   horarios: null, // PROVISÓRIO
 
+  /* ---------- A CASA (seção "Conheça a casa") ---------- */
+  sobre: {
+    // Palavra entre *asteriscos* fica amarela e sublinhada
+    titulo: "Burger bom é burger *amassado*.",
+    // PROVISÓRIO: trocar pela história real da casa (quando abriu, quem está por trás, o que inspirou)
+    paragrafos: [
+      "Smash é amassar. E é isso que a gente faz: o blend de 90g vai pra chapa bem quente e é prensado com força até a carne encostar inteira no ferro. É assim que nasce a crosta escura e crocante por fora, suculenta por dentro.",
+      "Depois é só montar: queijo derretendo por cima, o molho da casa e o pão brioche macio segurando tudo. Lanche direto ao ponto, feito pra comer com as mãos e voltar pra repetir."
+    ],
+    // Números grandes ao lado do texto
+    numeros: [
+      { valor: "90g", texto: "de blend em cada smmash, prensado na chapa" },
+      { valor: "4", texto: "molhos da casa: Salad, Secreto, Chipotle e Picante" },
+      { valor: "0", texto: "enrolação. Só o que importa no lanche." }
+    ]
+  },
+
   /* ---------- CARDÁPIO ----------
      Cada item: nome, preco, e se quiser: descricao, selo, foto.
      selo: texto curto que aparece ao lado do nome. Ex.: "Promoção", "Mais pedido", "Veggie"
      foto: endereço (link) de uma foto do lanche. Vazio = sem foto.
-     destaque: true deixa o item em um cartão chamativo (use pouco). */
+     destaque: true deixa o item em um cartão chamativo (use pouco).
+     Em cada categoria, rabisco: frase curta escrita "à mão" ao lado do título (opcional). */
   categorias: [
     { id: "combos", titulo: "Combos", itens: [
       { nome: "Commbo Smmash", preco: 65.90, descricao: "2 smmash + batata + refri tradicional.", selo: "Promoção", destaque: true }
     ]},
 
-    { id: "smmash", titulo: "Smmash",
+    { id: "smmash", titulo: "Smmash", rabisco: "tudo no pão brioche",
       nota: "Ammo Low Carb: troque o pão por alface em qualquer lanche. É só avisar na hora de pedir.",
       // PROVISÓRIO: perguntar ao dono qual é o mais pedido e colocar selo: "Mais pedido" nele
       itens: [
@@ -363,7 +1023,7 @@ var CONFIG = {
       itens: []
     },
 
-    { id: "adicionais", titulo: "Adicionais", compacto: true,
+    { id: "adicionais", titulo: "Adicionais", compacto: true, rabisco: "turbine seu lanche",
       nota: "Adicionais vão junto do lanche. É só avisar em qual lanche quer cada um na hora de pedir.",
       itens: [
       { nome: "Queijo cheddar", preco: 4.90 },
@@ -381,7 +1041,7 @@ var CONFIG = {
     ]},
 
     // PROVISÓRIO: confirmar o tamanho de cada bebida (lata, 600 ml, long neck...) e colocar em descricao
-    { id: "bebidas", titulo: "Bebidas", compacto: true, grupos: [
+    { id: "bebidas", titulo: "Bebidas", compacto: true, rabisco: "pra acompanhar", grupos: [
       { titulo: "Refrigerantes", itens: [
         { nome: "Coca-Cola", preco: 8.90 },
         { nome: "Coca-Cola Zero", preco: 8.90 },
@@ -407,7 +1067,7 @@ var CONFIG = {
       ]}
     ]},
 
-    { id: "sobremesas", titulo: "Sobremesas", itens: [
+    { id: "sobremesas", titulo: "Sobremesas", rabisco: "pra fechar bem", itens: [
       { nome: "Churros", preco: 13.90, descricao: "Quentinhos, com casquinha crocante, interior macio e finalizados com doce de leite." },
       { nome: "Brownie", preco: 8.90, descricao: "Denso, úmido e intenso. Tradicional ou avelã." },
       { nome: "Brownie Fit", preco: 10.90, selo: "Zero açúcar", descricao: "Massa macia e sabor equilibrado, pra quem quer um doce mais leve." }
@@ -422,6 +1082,7 @@ var CONFIG = {
   var SELOS_VERDES = { "veggie": 1, "zero açúcar": 1, "low carb": 1 };
   var DIAS = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
   var NOMES_DIAS = { seg: "Segunda", ter: "Terça", qua: "Quarta", qui: "Quinta", sex: "Sexta", sab: "Sábado", dom: "Domingo" };
+  var CALMO = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
   function $(id){ return document.getElementById(id); }
   function el(tag, cls, txt){
@@ -430,19 +1091,26 @@ var CONFIG = {
     if (txt != null) e.textContent = txt;
     return e;
   }
-  function dinheiro(v){ return "R$ " + (Math.round(v * 100) / 100).toFixed(2).replace(".", ","); }
+  function dinheiro(v){ return "R$ " + (Math.round(v * 100) / 100).toFixed(2).replace(".", ","); }
   function linkWhats(msg){ return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg); }
   function mostrar(e, sim){ if (sim) e.removeAttribute("hidden"); else e.setAttribute("hidden", ""); }
+  function classe(e, nome, sim){ if (sim) e.classList.add(nome); else e.classList.remove(nome); }
 
   /* ---------- textos do topo e informações ---------- */
+  var partes = CONFIG.nome.toUpperCase().split(" ");
   var marca = $("marca");
   marca.setAttribute("aria-label", CONFIG.nome);
   marca.innerHTML = "";
-  var partes = CONFIG.nome.toUpperCase().split(" ");
   for (var p = 0; p < partes.length; p++) marca.appendChild(el("span", "", partes[p]));
+  $("logo-texto").textContent = partes[0];
+  $("rodape-marca").textContent = partes[0];
+  $("rodape-nome").textContent = CONFIG.nome;
+  $("ano").textContent = new Date().getFullYear();
 
   if (CONFIG.previa){ $("previa").textContent = CONFIG.previa; mostrar($("previa"), true); }
   $("slogan").textContent = CONFIG.slogan;
+  $("adesivo").textContent = CONFIG.adesivo || "";
+  mostrar($("adesivo"), !!CONFIG.adesivo);
   $("como-pedir").textContent = CONFIG.comoPedir;
   $("endereco").textContent = CONFIG.endereco;
   $("link-mapa").href = CONFIG.mapa;
@@ -450,18 +1118,60 @@ var CONFIG = {
   if (CONFIG.alergia){ $("alergia").textContent = CONFIG.alergia; mostrar($("alergia"), true); }
 
   if (CONFIG.whatsapp){
-    var oi = "Olá, " + CONFIG.nome + "! Vim pelo cardápio online.";
+    var oi = "Olá, " + CONFIG.nome + "! Vim pelo site.";
     $("link-whats").href = linkWhats(oi);
     $("whats-flutuante").href = linkWhats(oi);
     mostrar($("link-whats"), true);
     mostrar($("whats-flutuante"), true);
   }
   if (CONFIG.instagram){
-    $("link-insta").href = "https://instagram.com/" + CONFIG.instagram;
+    var insta = "https://instagram.com/" + CONFIG.instagram;
+    $("link-insta").href = insta;
     $("link-insta").textContent = "@" + CONFIG.instagram;
+    $("rodape-insta").href = insta;
     mostrar($("link-insta"), true);
+    mostrar($("rodape-insta"), true);
   }
   mostrar($("bloco-contato"), !!(CONFIG.whatsapp || CONFIG.instagram));
+
+  /* ---------- faixa que passa ---------- */
+  var faixa = $("faixa");
+  function grupoFaixa(){
+    var g = el("span", "");
+    for (var r = 0; r < 2; r++){
+      for (var f = 0; f < CONFIG.faixa.length; f++){
+        g.appendChild(el("span", "", CONFIG.faixa[f]));
+        g.appendChild(el("span", "sep"));
+      }
+    }
+    return g;
+  }
+  if (CONFIG.faixa && CONFIG.faixa.length){
+    faixa.appendChild(grupoFaixa());
+    faixa.appendChild(grupoFaixa()); // cópia para o movimento não ter emenda
+  } else {
+    mostrar(faixa.parentNode, false);
+  }
+
+  /* ---------- a casa ---------- */
+  var S = CONFIG.sobre || {};
+  var tituloCasa = $("casa-titulo");
+  var pedacos = (S.titulo || "").split("*");
+  for (var t = 0; t < pedacos.length; t++){
+    if (t % 2) tituloCasa.appendChild(el("em", "", pedacos[t]));
+    else tituloCasa.appendChild(document.createTextNode(pedacos[t]));
+  }
+  var paragrafos = S.paragrafos || [];
+  for (var q = 0; q < paragrafos.length; q++) $("casa-texto").appendChild(el("p", "", paragrafos[q]));
+  var numeros = S.numeros || [];
+  for (var n = 0; n < numeros.length; n++){
+    var li = el("li", "");
+    var v = el("span", "valor", numeros[n].valor);
+    v.setAttribute("data-valor", numeros[n].valor);
+    li.appendChild(v);
+    li.appendChild(el("span", "texto", numeros[n].texto));
+    $("numeros").appendChild(li);
+  }
 
   /* ---------- horário e "aberto agora" ---------- */
   function minutos(h){ var x = h.split(":"); return parseInt(x[0], 10) * 60 + parseInt(x[1], 10); }
@@ -477,10 +1187,10 @@ var CONFIG = {
     var lista = $("horarios");
     var ordem = ["seg", "ter", "qua", "qui", "sex", "sab", "dom"];
     for (var d = 0; d < ordem.length; d++){
-      var li = el("li", ordem[d] === hoje ? "hoje" : "");
-      li.appendChild(el("span", "", NOMES_DIAS[ordem[d]]));
-      li.appendChild(el("span", "", H[ordem[d]] ? hora(H[ordem[d]][0]) + " às " + hora(H[ordem[d]][1]) : "Fechado"));
-      lista.appendChild(li);
+      var dia = el("li", ordem[d] === hoje ? "hoje" : "");
+      dia.appendChild(el("span", "", NOMES_DIAS[ordem[d]]));
+      dia.appendChild(el("span", "", H[ordem[d]] ? hora(H[ordem[d]][0]) + " às " + hora(H[ordem[d]][1]) : "Fechado"));
+      lista.appendChild(dia);
     }
     mostrar(lista, true);
     mostrar($("horario-vazio"), false);
@@ -489,36 +1199,42 @@ var CONFIG = {
     var hj = H[hoje], ot = H[ontem];
     if (ot && minutos(ot[1]) <= minutos(ot[0]) && m < minutos(ot[1])){ aberto = true; fecha = ot[1]; }
     if (!aberto && hj){
-      var a = minutos(hj[0]), f = minutos(hj[1]);
-      if (f <= a){ if (m >= a){ aberto = true; fecha = hj[1]; } }
-      else if (m >= a && m < f){ aberto = true; fecha = hj[1]; }
+      var a = minutos(hj[0]), f2 = minutos(hj[1]);
+      if (f2 <= a){ if (m >= a){ aberto = true; fecha = hj[1]; } }
+      else if (m >= a && m < f2){ aberto = true; fecha = hj[1]; }
       if (!aberto && m < a) abreHoje = hj[0];
     }
-    var st = $("status");
-    if (aberto){ st.textContent = "Aberto agora · fecha às " + hora(fecha); st.className = "status aberto"; }
-    else st.textContent = abreHoje ? "Fechado agora · abre hoje às " + hora(abreHoje) : "Fechado agora";
-    mostrar(st, true);
+    var textoStatus = aberto ? "Aberto agora · fecha às " + hora(fecha)
+      : (abreHoje ? "Fechado agora · abre hoje às " + hora(abreHoje) : "Fechado agora");
+    var selos = [$("status"), $("status-visite")];
+    for (var s2 = 0; s2 < selos.length; s2++){
+      selos[s2].textContent = textoStatus;
+      classe(selos[s2], "aberto", aberto);
+      mostrar(selos[s2], true);
+    }
   }
 
   /* ---------- cardápio ---------- */
   var itens = [];     // todos os itens, na ordem
   var pedido = {};    // posição do item -> quantidade
   var botoes = [];    // botão "+" de cada item
-  var main = $("cardapio");
+  var listaCardapio = $("cardapio-lista");
   var cats = $("cats");
 
-  function criarItem(item, nivel){
+  function criarItem(item, nivel, numero){
     var id = itens.length;
     itens.push(item);
     var art = el("article", "item" + (item.destaque ? " destaque" : ""));
     if (item.foto){
       var img = el("img", "foto");
       img.src = item.foto; img.alt = item.nome; img.loading = "lazy";
-      img.width = 84; img.height = 84;
+      img.width = 480; img.height = 300;
       art.appendChild(img);
     }
     var txt = el("div", "texto");
-    var nome = el(nivel, "nome", item.nome);
+    var nome = el(nivel, "nome");
+    if (numero) nome.appendChild(el("span", "num", (numero < 10 ? "0" : "") + numero));
+    nome.appendChild(document.createTextNode(item.nome));
     if (item.selo){
       nome.appendChild(el("span", "selo" + (SELOS_VERDES[item.selo.toLowerCase()] ? " verde" : ""), item.selo));
     }
@@ -541,25 +1257,31 @@ var CONFIG = {
 
   for (var c = 0; c < CONFIG.categorias.length; c++){
     var cat = CONFIG.categorias[c];
-    var a = el("a", "", cat.titulo);
-    a.href = "#" + cat.id;
-    cats.appendChild(a);
+    var link = el("a", "", cat.titulo);
+    link.href = "#" + cat.id;
+    cats.appendChild(link);
 
     var sec = el("section", "secao" + (cat.compacto ? " compacto" : ""));
     sec.id = cat.id;
-    sec.appendChild(el("h2", "", cat.titulo));
+    var cabeca = el("div", "secao-cabeca");
+    cabeca.appendChild(el("h3", "", cat.titulo));
+    if (cat.rabisco) cabeca.appendChild(el("p", "rabisco", cat.rabisco));
+    sec.appendChild(cabeca);
     if (cat.nota) sec.appendChild(el("p", "nota", cat.nota));
 
     var grupos = cat.grupos || [{ titulo: "", itens: cat.itens || [] }];
+    var contagem = 0;
     for (var g = 0; g < grupos.length; g++){
-      if (grupos[g].titulo) sec.appendChild(el("h3", "grupo-titulo", grupos[g].titulo));
+      if (grupos[g].titulo) sec.appendChild(el("h4", "grupo-titulo", grupos[g].titulo));
       var grade = el("div", "grade");
       for (var i = 0; i < grupos[g].itens.length; i++){
-        grade.appendChild(criarItem(grupos[g].itens[i], grupos[g].titulo ? "h4" : "h3"));
+        var it = grupos[g].itens[i];
+        var numero = (!cat.compacto && !it.destaque) ? ++contagem : 0;
+        grade.appendChild(criarItem(it, grupos[g].titulo ? "h5" : "h4", numero));
       }
-      sec.appendChild(grade);
+      if (grupos[g].itens.length) sec.appendChild(grade);
     }
-    main.appendChild(sec);
+    listaCardapio.appendChild(sec);
   }
 
   /* ---------- meu pedido ---------- */
@@ -574,10 +1296,10 @@ var CONFIG = {
   function mensagem(){
     var linhas = [];
     for (var id in pedido){
-      linhas.push(pedido[id] + "x " + itens[id].nome + " (" + dinheiro(pedido[id] * itens[id].preco).replace(" ", " ") + ")");
+      linhas.push(pedido[id] + "x " + itens[id].nome + " (" + dinheiro(pedido[id] * itens[id].preco).replace(" ", " ") + ")");
     }
     return "Olá, " + CONFIG.nome + "! Gostaria de fazer este pedido:\n\n" + linhas.join("\n") +
-      "\n\nTotal: " + dinheiro(contar().total).replace(" ", " ") + "\n\nObrigado!";
+      "\n\nTotal: " + dinheiro(contar().total).replace(" ", " ") + "\n\nObrigado!";
   }
 
   function desenharFolha(){
@@ -617,8 +1339,7 @@ var CONFIG = {
     $("barra-qtd").textContent = "Ver meu pedido · " + t.qtd + (t.qtd === 1 ? " item" : " itens");
     $("barra-total").textContent = dinheiro(t.total);
     mostrar($("barra"), t.qtd > 0);
-    if (t.qtd > 0) document.body.className += document.body.className.indexOf("com-pedido") < 0 ? " com-pedido" : "";
-    else document.body.className = document.body.className.replace(/\s*com-pedido/g, "");
+    classe(document.body, "com-pedido", t.qtd > 0);
     if (!folha.hasAttribute("hidden")){
       if (t.qtd === 0) fecharFolha(); else desenharFolha();
     }
@@ -633,19 +1354,24 @@ var CONFIG = {
   function abrirFolha(){
     desenharFolha();
     mostrar(fundo, true); mostrar(folha, true);
-    document.body.className += " travado";
+    classe(document.body, "travado", true);
     $("fechar-pedido").focus();
   }
   function fecharFolha(){
     mostrar(fundo, false); mostrar(folha, false);
-    document.body.className = document.body.className.replace(/\s*travado/g, "");
+    classe(document.body, "travado", false);
     if (!$("barra").hasAttribute("hidden")) abrir.focus();
   }
 
-  main.addEventListener("click", function(e){
+  listaCardapio.addEventListener("click", function(e){
     var b = e.target;
-    while (b && b !== main && !(b.getAttribute && b.getAttribute("data-id") !== null)) b = b.parentNode;
-    if (b && b !== main) mudar(parseInt(b.getAttribute("data-id"), 10), 1);
+    while (b && b !== listaCardapio && !(b.getAttribute && b.getAttribute("data-id") !== null)) b = b.parentNode;
+    if (b && b !== listaCardapio){
+      mudar(parseInt(b.getAttribute("data-id"), 10), 1);
+      classe(b, "pulou", false);
+      void b.offsetWidth; // reinicia a animação do botão
+      classe(b, "pulou", true);
+    }
   });
   $("pedido-linhas").addEventListener("click", function(e){
     var t = e.target;
@@ -660,22 +1386,79 @@ var CONFIG = {
     if ((e.key === "Escape" || e.keyCode === 27) && !folha.hasAttribute("hidden")) fecharFolha();
   });
 
-  /* ---------- destaca no menu a categoria que está na tela ---------- */
+  /* ---------- barra do topo some ao descer e volta ao subir ---------- */
+  var ultimoY = window.pageYOffset, agendado = false;
+  function aoRolar(){
+    agendado = false;
+    var y = window.pageYOffset;
+    if (Math.abs(y - ultimoY) < 6) return;
+    classe(document.body, "topo-oculto", y > ultimoY && y > 240);
+    ultimoY = y;
+  }
+  window.addEventListener("scroll", function(){
+    if (!agendado){ agendado = true; (window.requestAnimationFrame || setTimeout)(aoRolar); }
+  });
+
+  /* ---------- destaques que acompanham a rolagem ---------- */
+  function contarAte(e){
+    var bruto = e.getAttribute("data-valor") || "";
+    var x = bruto.match(/^(\d+)(.*)$/);
+    if (!x || CALMO || !window.requestAnimationFrame) return;
+    var alvo = parseInt(x[1], 10), resto = x[2], inicio = null;
+    function passo(ts){
+      if (inicio === null) inicio = ts;
+      var k = Math.min((ts - inicio) / 1100, 1);
+      e.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3))) + resto;
+      if (k < 1) window.requestAnimationFrame(passo);
+    }
+    window.requestAnimationFrame(passo);
+  }
+
+  var revelar = document.querySelectorAll(".revelar");
   if ("IntersectionObserver" in window){
-    var links = cats.getElementsByTagName("a");
-    var obs = new IntersectionObserver(function(ents){
+    // categoria que está na tela fica marcada no menu do cardápio
+    var linksCats = cats.getElementsByTagName("a");
+    var obsCats = new IntersectionObserver(function(ents){
       for (var k = 0; k < ents.length; k++){
         if (!ents[k].isIntersecting) continue;
         var alvo = "#" + ents[k].target.id;
-        for (var j = 0; j < links.length; j++){
-          var ativo = links[j].getAttribute("href") === alvo;
-          links[j].className = ativo ? "ativa" : "";
-          if (ativo) cats.scrollLeft = links[j].offsetLeft - (cats.clientWidth - links[j].offsetWidth) / 2;
+        for (var j = 0; j < linksCats.length; j++){
+          var ativo = linksCats[j].getAttribute("href") === alvo;
+          linksCats[j].className = ativo ? "ativa" : "";
+          if (ativo) cats.scrollLeft = linksCats[j].offsetLeft - (cats.clientWidth - linksCats[j].offsetWidth) / 2;
         }
       }
     }, { rootMargin: "-40% 0px -55% 0px" });
-    var secoes = main.getElementsByTagName("section");
-    for (var s = 0; s < secoes.length; s++) obs.observe(secoes[s]);
+    var secoes = listaCardapio.getElementsByTagName("section");
+    for (var s = 0; s < secoes.length; s++) obsCats.observe(secoes[s]);
+
+    // seção da página que está na tela fica marcada no topo
+    var linksTopo = $("menu-topo").getElementsByTagName("a");
+    var obsTopo = new IntersectionObserver(function(ents){
+      for (var k = 0; k < ents.length; k++){
+        var id = "#" + ents[k].target.id;
+        for (var j = 0; j < linksTopo.length; j++){
+          if (linksTopo[j].getAttribute("href") === id) classe(linksTopo[j], "ativo", ents[k].isIntersecting);
+        }
+      }
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    var paginas = ["cardapio", "a-casa", "como-fazemos", "visite"];
+    for (var pg = 0; pg < paginas.length; pg++) obsTopo.observe($(paginas[pg]));
+
+    // blocos aparecem suavemente quando entram na tela
+    var obsRevelar = new IntersectionObserver(function(ents){
+      for (var k = 0; k < ents.length; k++){
+        if (!ents[k].isIntersecting) continue;
+        var alvo = ents[k].target;
+        classe(alvo, "visivel", true);
+        obsRevelar.unobserve(alvo);
+        var vals = alvo.querySelectorAll ? alvo.querySelectorAll("[data-valor]") : [];
+        for (var z = 0; z < vals.length; z++) contarAte(vals[z]);
+      }
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    for (var r = 0; r < revelar.length; r++) obsRevelar.observe(revelar[r]);
+  } else {
+    for (var r2 = 0; r2 < revelar.length; r2++) classe(revelar[r2], "visivel", true);
   }
 })();
 </script>
